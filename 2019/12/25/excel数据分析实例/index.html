@@ -1,0 +1,1011 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <link rel="icon" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="泉泉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="问题背景bi某教育机构遇到一个问题：近期课程销售量上升，但是计算出来的毛利额在下降。 如何分析并解决？ 确认问题并拆解指标确认毛利额数据异常问题 确认数据源问题——数据缺失、口径异常  确认是否是外因所致——用户消费能力下降or行业不景气  产品问题  销量上——低毛利率商品销量上升；高毛利率商品销量下降 售价上——价格是否下降？是否打折？ 成本上——内容创作成本激增   渠道问题——渠道成本激增">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excel数据分析实例">
+<meta property="og:url" content="https://liaoweiquan.github.io/2019/12/25/excel%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/index.html">
+<meta property="og:site_name" content="Quan&#39;sRecord">
+<meta property="og:description" content="问题背景bi某教育机构遇到一个问题：近期课程销售量上升，但是计算出来的毛利额在下降。 如何分析并解决？ 确认问题并拆解指标确认毛利额数据异常问题 确认数据源问题——数据缺失、口径异常  确认是否是外因所致——用户消费能力下降or行业不景气  产品问题  销量上——低毛利率商品销量上升；高毛利率商品销量下降 售价上——价格是否下降？是否打折？ 成本上——内容创作成本激增   渠道问题——渠道成本激增">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="article:published_time" content="2019-12-25T05:52:28.000Z">
+<meta property="article:modified_time" content="2023-03-31T11:29:46.000Z">
+<meta property="article:author" content="泉泉">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="Excel">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://liaoweiquan.github.io/">
+  
+  
+  
+  <title>Excel数据分析实例 - Quan&#39;sRecord</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liaoweiquan.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":40,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Quan&#39;s Record.</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVVpDZ3dJV2g2V2wwVTJDP2U9emp0bHdG.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Excel数据分析实例"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-12-25 13:52" pubdate>
+          2019年12月25日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          3.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          27 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Excel数据分析实例</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><p>bi某教育机构遇到一个问题：近期课程销售量上升，但是计算出来的毛利额在下降。</p>
+<p>如何分析并解决？</p>
+<h1 id="确认问题并拆解指标"><a href="#确认问题并拆解指标" class="headerlink" title="确认问题并拆解指标"></a>确认问题并拆解指标</h1><h2 id="确认毛利额数据异常问题"><a href="#确认毛利额数据异常问题" class="headerlink" title="确认毛利额数据异常问题"></a>确认毛利额数据异常问题</h2><ol>
+<li><p>确认数据源问题——数据缺失、口径异常</p>
+</li>
+<li><p>确认是否是外因所致——用户消费能力下降or行业不景气</p>
+</li>
+<li><p>产品问题</p>
+<ul>
+<li>销量上——低毛利率商品销量上升；高毛利率商品销量下降</li>
+<li>售价上——价格是否下降？是否打折？</li>
+<li>成本上——内容创作成本激增</li>
+</ul>
+</li>
+<li><p>渠道问题——渠道成本激增、渠道质量下降、活动ROI</p>
+</li>
+</ol>
+<h2 id="提升毛利率方案"><a href="#提升毛利率方案" class="headerlink" title="提升毛利率方案"></a>提升毛利率方案</h2><ol>
+<li><p>提升销量</p>
+<ol>
+<li><p>营销优化</p>
+<ul>
+<li>增加优质渠道投放</li>
+<li>优化文案质量</li>
+<li>优化营销活动，避免亏本拉新</li>
+<li>增加体验课、公开课</li>
+<li>精细化用户运营：对用户分层，采用不同的营销方案，提高用户的小课复购率和大课转化</li>
+</ul>
+</li>
+<li><p>产品优化</p>
+<ul>
+<li>优化用户体验</li>
+<li>优化学习流程，增加用户停留时间</li>
+</ul>
+</li>
+<li><p>长远之计——内容优化形成口碑，提高完课率，满意度，就业率</p>
+</li>
+</ol>
+</li>
+<li><p>减少成本——优化渠道</p>
+</li>
+</ol>
+<h1 id="整体框架"><a href="#整体框架" class="headerlink" title="整体框架"></a>整体框架</h1><h2 id="一、通过逻辑树拆解方法，逐步确认各渠道的问题"><a href="#一、通过逻辑树拆解方法，逐步确认各渠道的问题" class="headerlink" title="一、通过逻辑树拆解方法，逐步确认各渠道的问题"></a>一、通过逻辑树拆解方法，逐步确认各渠道的问题</h2><p>定位问题原因为：八月免费渠道做促销活动，导致部分课程亏本销售，导致部分盈利额下降</p>
+<p>解决：优化渠道投放比例，提高课程成交量</p>
+<ol>
+<li>通过综合排名分析法，将渠道排名。找出转化率高、成本低、流量大的渠道</li>
+<li>与营销部门确认方案可行性</li>
+<li>不同渠道预算配比做ABtest</li>
+<li>7日为周期评估实验结果</li>
+</ol>
+<h3 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h3><h4 id="问题拆解——数据涨跌异动分析"><a href="#问题拆解——数据涨跌异动分析" class="headerlink" title="问题拆解——数据涨跌异动分析"></a>问题拆解——数据涨跌异动分析</h4><p><img src="/" srcset="/img/loading.gif" lazyload alt="图片3"></p>
+<p>绘制今年各月销售量与毛利额的折线图</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片1"></p>
+<p>结论：发现8月份销售额上升，毛利率下降。要继续看毛利率与毛利率环比查看是否是正常波动</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片2"></p>
+<p>结论：8月毛利率出现异常，确认为异常波动</p>
+<p>渠道类型较多，先找大渠道，再找细分渠道：绘制销售量和利润率的矩阵关联图</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片4"></p>
+<p>结论：8月中的免费渠道是高销售额，但毛利率低</p>
+<p>继续找免费渠道内的详细渠道，继续矩阵关联分析</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片5"></p>
+<p>结论：免费渠道下的站内广告位销售额较高，但是毛利率极低； EDM短信的销售额极高且毛利率较低。</p>
+<p>继续查看7、8月份的毛利率对比图</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片7"></p>
+<p>结论：发现站内广告、EDM短信、0元体验课都导致8月的毛利率降低。</p>
+<p>查询到：站内广告位渠道在8月17日做了促销活动，当日出现20单毛利额为负的订单。导致该渠道8月毛利率为负值。 </p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片8"></p>
+<p>继续查看7、8月份的销售额的对比图</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片6"></p>
+<p>结论：发现站内广告位、社群（站内）、外呼都使销售额上升</p>
+<p>继续考察免费渠道下，不同渠道对销售额涨幅的贡献率</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片9"></p>
+<p>结论：确认站内广告这一渠道对销售额贡献达100%。说明8月份销售额上升，利润率下降主要是由免费渠道中的站内广告销售额上升，毛利额下降导致的。</p>
+<p>该渠道在8 月17日的招生出现了毛利额为负的情况；而由于该活动促销的是本月一门新开大课，课程按本月成本分摊较高，所以出现了毛利额为负的情况，拉低了整体的毛利额。</p>
+<h4 id="综合分析渠道，进行渠道排名"><a href="#综合分析渠道，进行渠道排名" class="headerlink" title="综合分析渠道，进行渠道排名"></a>综合分析渠道，进行渠道排名</h4><blockquote>
+<p>综合分析法 ：将人脑模糊逻辑转化为计算机0&#x2F;1逻辑思维，得出量化结果。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>具体操作方法</p>
+<ol>
+<li>纵坐标上的指标与横坐标上的指标进行对比</li>
+<li>专家投票</li>
+<li>纵坐标比横坐标重要记为1，否则为0</li>
+<li>每行结果相加为综合得分（若有重要指标综合得分为0，可全体+1）</li>
+<li>通过综合得分求出权重</li>
+</ol>
+</blockquote>
+</blockquote>
+<ol>
+<li>对渠道四个指标通过优化矩阵进行权重划分，确定各指标的权重值</li>
+</ol>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片10"></p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片11"></p>
+<ol start="2">
+<li>对渠道各指标进行0-1标准化，去除量纲影响</li>
+<li>利用标准化后的指标与原指标进行成绩求和，得出综合得分</li>
+<li>利用综合得分进行排名</li>
+</ol>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片12"></p>
+<p>结论：先有渠道最好的为站内广告位。但是由于投放广告涉及很多因素，如广告复投问题、文案更新问题、转化周期长短问题。</p>
+<p>后续的改进策略还需要进一步与营销部门商议。</p>
+<h2 id="二、优化产品用户体验，提升留电率、进群率、转化率"><a href="#二、优化产品用户体验，提升留电率、进群率、转化率" class="headerlink" title="二、优化产品用户体验，提升留电率、进群率、转化率"></a>二、优化产品用户体验，提升留电率、进群率、转化率</h2><p>解决：</p>
+<ol>
+<li><p>方案——通过漏斗分析，找到需要提升的转化环节是留电环节，之后通过用户调研进一步找到结果，最终提升留电环节转化率22.72pp，提升整体转化率1.52pp。</p>
+</li>
+<li><p>通过现有漏斗转化数据评估改进后的漏斗能够带来的销量提升。</p>
+</li>
+<li><p>做ABtest：客服团队响应的实验和产品改进的实验。</p>
+</li>
+<li><p>7日周期评估实验结果。</p>
+</li>
+<li><p>结案报告并推广。</p>
+</li>
+</ol>
+<h3 id="具体操作-1"><a href="#具体操作-1" class="headerlink" title="具体操作"></a>具体操作</h3><h4 id="漏斗分析，看各环节转化情况"><a href="#漏斗分析，看各环节转化情况" class="headerlink" title="漏斗分析，看各环节转化情况"></a>漏斗分析，看各环节转化情况</h4><blockquote>
+<p>漏斗分析：反映用户行为状态，反应从起点到终点各阶段用户转化率情况。</p>
+</blockquote>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片13"></p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片14"></p>
+<p>从总体最终转化来看低于行业转化水平3%-5%，并且咨询到预留电话环节转化明显较低，考虑是从 客服响应时间或话术方面进行优化。</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片15"></p>
+<p>结论：从人工客服响应时长分析，用户平均响应时长为187秒，约为3分钟。事后通过用户访谈，发现人工等待时间较长的问题也出现在较多反馈问题的区域中(该问题排名为30个中的第四个)。 </p>
+<p>还需要ABtest得出结论，可能需要改进的方面有：</p>
+<ol>
+<li><p>   落地页功能：</p>
+<ul>
+<li>检验落地页打开是否正常；留电弹窗是否正常。</li>
+</ul>
+</li>
+<li><p>   落地页样式：</p>
+<ul>
+<li><p>通过问卷调查调查落地页样式的满意度；</p>
+</li>
+<li><p>设计不同的落地页样式来实验，找到能够提高转化率的落地页样式。</p>
+</li>
+</ul>
+</li>
+<li><p>   落地页页面布局：</p>
+<ul>
+<li><p>同上，调查布局的满意度；</p>
+</li>
+<li><p>并设计不同的布局来实验。</p>
+</li>
+</ul>
+</li>
+<li><p>   课程介绍方式：</p>
+<ul>
+<li><p>问卷调查课程介绍的满意度；</p>
+</li>
+<li><p>通过不同的关键词组合和不同的内容组合方式来优化课程介绍方式；</p>
+</li>
+<li><p>通过实验验证不同组合的优化效果。</p>
+</li>
+</ul>
+</li>
+<li><p>   客服弹窗体验：</p>
+<ul>
+<li><p>问卷调查弹窗满意度；</p>
+</li>
+<li><p>通过实验验证主动弹窗和用户点击弹窗的转化提升情况；</p>
+</li>
+<li><p>设计不同的弹窗方式，验证不同的优化效果。</p>
+</li>
+</ul>
+</li>
+<li><p>   机器人客服体验：</p>
+<ul>
+<li><p>问卷调查机器人满意度；</p>
+</li>
+<li><p>优化机器人问答算法；</p>
+</li>
+<li><p>通过实验对比优化前后的转化率情况。</p>
+</li>
+</ul>
+</li>
+<li><p>   资料下载：</p>
+<ul>
+<li><p>问卷调查资料下载的满意度；</p>
+</li>
+<li><p>按用户反馈改进资料下载。</p>
+</li>
+</ul>
+</li>
+<li><p>   留电页面体验：</p>
+<ul>
+<li>同上。</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、通过精细化运营，增加用户小课转化量"><a href="#三、通过精细化运营，增加用户小课转化量" class="headerlink" title="三、通过精细化运营，增加用户小课转化量"></a>三、通过精细化运营，增加用户小课转化量</h2><ol>
+<li><p>方案——通过RFM模型对小课用户进行分层，最终转化小课两万单</p>
+</li>
+<li><p>通过不同类用户转化量评估完成目标份额</p>
+</li>
+<li><p>随机分层抽样：通过对不同的RMF层级用户抽样，实验设计最有效的转化营销方案</p>
+</li>
+<li><p>7日为周期评估实验结果</p>
+</li>
+<li><p>报告结案</p>
+</li>
+</ol>
+<h3 id="具体操作-2"><a href="#具体操作-2" class="headerlink" title="具体操作"></a>具体操作</h3><h4 id="用户价值分析，RFM建模"><a href="#用户价值分析，RFM建模" class="headerlink" title="用户价值分析，RFM建模"></a>用户价值分析，RFM建模</h4><blockquote>
+<p>RFM客户价值模型：R(recency)黏性，F(frequancy)忠诚度，M(monetary)消费能力。</p>
+</blockquote>
+<p>原始字段和客户分类标准如下：</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片16"></p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片17"></p>
+<p>构建出R、F、M列，并将其与均值比较得出RS、FS、MS列，将三列&amp;起来得到辅助列，与客户分类表的辅助列关联起来得到客户类型。</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片18"></p>
+<p>得到客户各类型人数表格和饼状图如下：：</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片19"></p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="图片20"></p>
+<h2 id="四、后续计划"><a href="#四、后续计划" class="headerlink" title="四、后续计划"></a>四、后续计划</h2><ol>
+<li><p>   为学院设计精细化运营方案，利用推荐算法设计出客户的兴趣领域。</p>
+<ul>
+<li><p>重要价值客户——直接推荐大课购买的方案来吸引客户转化</p>
+</li>
+<li><p>重要保持客户——小课促销来吸引客户复购，之后再逐步推荐大课来促进用户转化</p>
+</li>
+<li><p>重要发展客户——可以用大课送会员的方式来吸引客户转化</p>
+</li>
+<li><p>重要挽留客户——小课促销方案来吸引客户复购，之后再逐步用大课送会员方式吸引客户转化</p>
+</li>
+<li><p>一般价值客户——大课限时促销方案吸引客户转化</p>
+</li>
+<li><p>一般发展客户——小课转大课可优惠来吸引用户转化</p>
+</li>
+<li><p>一般保持客户——小课促销来吸引客户复购，之后逐步推荐大课来促进转化</p>
+</li>
+<li><p>一般挽留客户——先做用户召回，逐步开始用小课促销方案吸引用户复购</p>
+</li>
+</ul>
+</li>
+<li><p>   对不同层级学员做运营方案实验</p>
+</li>
+</ol>
+<h2 id="五、最终结论"><a href="#五、最终结论" class="headerlink" title="五、最终结论"></a>五、最终结论</h2><ol>
+<li><p>八月的免费渠道下的站内广告位虽然出现亏损活动，但从1-8月的数据来看，站内广告位仍然是优质渠道（在综合分析的渠道排名中居于第四），后需要重点关注。</p>
+<ul>
+<li><p>通过分析发现8月销售额上升，而毛利额异常下降是由于站内广告位做打折促销引发的。由于折价设置失误导致出现账面亏损，从而引发毛利额下降问题。</p>
+</li>
+<li><p>该问题需反馈营销团队，后续设计价格预警系统，如有类似价格设置失误情况，会及时预警。</p>
+</li>
+<li><p>通过综合分析，对各渠道的ROI、报名人数转化率、跳出率、线索量做综合指数，计算出19年8月的最优渠道为站内广告位渠道。后续需与营销团队依据各渠道特点进一步商议渠道改进方案。</p>
+</li>
+</ul>
+</li>
+<li><p>留电环节为重点优化环节，优化后对整体转化率有1.52pp的提升。</p>
+<ul>
+<li><p>通过漏斗分析，发现用户转化率环节中，留电环节转化率较低。</p>
+</li>
+<li><p>与客服，产品团队商议后制定改进方案。经过一个月的改进，留电环节率从22.57%提升至44.16%，整体转化率有1.52pp的提高。大课转化人数较8月增加330人，按每人人均1600的毛利额计算，预计能提升52.8万的毛利额。按当月浏览人数16034人计算，预计报名人数有586人，预计改进能完成93.76万元的毛利额。</p>
+</li>
+</ul>
+</li>
+<li><p>经过用户精细化运营推广模型后，已转化大课501人，小课3377人。按照小课人均毛利额17元计算，小课预计能完成5.7万毛利额任务。</p>
+</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#数据分析</a>
+      
+        <a href="/tags/Excel/">#Excel</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Excel数据分析实例</div>
+      <div>https://liaoweiquan.github.io/2019/12/25/excel数据分析实例/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>泉泉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年12月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/21/Python%E5%88%9D%E8%A7%81/" title="人生苦短，我也要用Python">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">人生苦短，我也要用Python</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/09/02/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/" title="计量经济学笔记">
+                        <span class="hidden-mobile">计量经济学笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://damaohappy.zeabur.app","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+              Fluid.plugins.imageCaption(imgSelector);
+              Fluid.plugins.fancyBox(imgSelector);
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

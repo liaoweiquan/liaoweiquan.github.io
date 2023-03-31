@@ -1,0 +1,825 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <link rel="icon" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="泉泉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="写在前面已经学过C语言的我，还是非常坚定的想要入Python的坑。 简单说说C语言和Python的区别吧～  动态类型：Python是妥妥的动态类型语言，这意味着在编程时无需声明变量的数据类型。  相比之下，C语言是一种静态类型的语言，需要在编程时显式地声明变量的数据类型。  简洁的语法：Python的语法非常简洁，代码量相比于C语言要少得多。例如，Python中的代码块使用缩进来表示，而C语言中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人生苦短，我也要用Python">
+<meta property="og:url" content="https://liaoweiquan.github.io/2021/05/21/Python%E5%88%9D%E8%A7%81/index.html">
+<meta property="og:site_name" content="Quan&#39;sRecord">
+<meta property="og:description" content="写在前面已经学过C语言的我，还是非常坚定的想要入Python的坑。 简单说说C语言和Python的区别吧～  动态类型：Python是妥妥的动态类型语言，这意味着在编程时无需声明变量的数据类型。  相比之下，C语言是一种静态类型的语言，需要在编程时显式地声明变量的数据类型。  简洁的语法：Python的语法非常简洁，代码量相比于C语言要少得多。例如，Python中的代码块使用缩进来表示，而C语言中">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-21T12:45:19.000Z">
+<meta property="article:modified_time" content="2023-03-07T00:23:24.000Z">
+<meta property="article:author" content="泉泉">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>人生苦短，我也要用Python - Quan&#39;sRecord</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liaoweiquan.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":40,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Quan&#39;s Record.</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVVpDZ3dJV2g2V2wwVTJDP2U9emp0bHdG.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="人生苦短，我也要用Python"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-05-21 20:45" pubdate>
+          2021年5月21日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          51 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">人生苦短，我也要用Python</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>已经学过C语言的我，还是非常坚定的想要入Python的坑。</p>
+<p>简单说说C语言和Python的区别吧～</p>
+<ol>
+<li><p>动态类型：Python是妥妥的动态类型语言，这意味着在编程时无需声明变量的数据类型。</p>
+<p> 相比之下，C语言是一种静态类型的语言，需要在编程时显式地声明变量的数据类型。</p>
+</li>
+<li><p>简洁的语法：Python的语法非常简洁，代码量相比于C语言要少得多。例如，Python中的代码块使用缩进来表示，而C语言中使用花括号。这使得Python代码更易读、易写、易维护。</p>
+</li>
+<li><p>自动内存管理：Python有一个垃圾回收机制，可以自动管理内存。<br>程序员不需要手动分配和释放内存，减少了程序出现内存泄漏和野指针等问题的可能性。</p>
+</li>
+<li><p>支持多种编程范式：Python支持面向对象编程、函数式编程和命令式编程等多种编程范式。相比之下，C语言主要是一种命令式编程语言，虽然也可以实现面向对象编程和函数式编程，但是相对麻烦。</p>
+</li>
+<li><p>Python拥有丰富的标准库，其中包含了大量的模块和函数，可以帮助程序员更快地编写Python程序。<br>相比之下，C语言的标准库相对较小，需要依赖于第三方库来实现更多的功能。</p>
+</li>
+</ol>
+<p>好了，好处说完了，Python也有一些缺点，例如运行速度相对较慢，对于某些需要高性能的场景可能不太适合。</p>
+<h1 id="Python语法笔记"><a href="#Python语法笔记" class="headerlink" title="Python语法笔记"></a>Python语法笔记</h1><h2 id="Python的动态特性"><a href="#Python的动态特性" class="headerlink" title="Python的动态特性"></a>Python的动态特性</h2><p>当谈到Python的动态特性时，我们通常指的是Python语言在运行时动态执行代码的能力，这种能力称为动态语言特性。Python作为一种动态语言，具有许多特性，例如：</p>
+<h3 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h3><p>Python是一种动态类型语言，即在声明变量时无需指定其类型。变量的类型是在运行时动态推断的。例如，以下代码在Python中是合法的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-number">5</span><br>a = <span class="hljs-string">&quot;Hello, World!&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>这种特性使得Python更加灵活和易于使用，但也增加了类型相关的错误和性能开销。</p>
+<h3 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h3><p>Python允许在运行时动态绑定属性和方法。例如，以下代码创建一个新的类，并在运行时向该类添加新的属性和方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span>:<br>    <span class="hljs-keyword">pass</span><br><br>obj = MyClass()<br>obj.name = <span class="hljs-string">&quot;Tom&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">say_hello</span>(<span class="hljs-params">self</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello, &quot;</span> + self.name)<br><br>MyClass.say_hello = say_hello<br><br>obj.say_hello()<br></code></pre></td></tr></table></figure>
+
+<p>在此示例中，我们创建了一个名为MyClass的类，并将其实例化为obj对象。我们在运行时向该对象动态添加了一个名为name的属性和一个名为say_hello的方法。最后，我们调用了对象的say_hello方法，并打印了一条问候语。</p>
+<h3 id="动态导入"><a href="#动态导入" class="headerlink" title="动态导入"></a>动态导入</h3><p>Python允许在运行时动态导入模块。例如，以下代码动态导入了Python的内置模块math，并使用其sin函数计算正弦值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> importlib<br><br>module_name = <span class="hljs-string">&quot;math&quot;</span><br>module = importlib.import_module(module_name)<br><br>angle = <span class="hljs-number">45</span><br>sin_value = module.sin(angle)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;The sin value of&quot;</span>, angle, <span class="hljs-string">&quot;degrees is&quot;</span>, sin_value)<br></code></pre></td></tr></table></figure>
+<p>在此示例中，我们使用Python的importlib模块动态导入了Python的内置模块math，并使用其sin函数计算正弦值。这种动态导入特性使得Python更加灵活和可扩展。</p>
+<h2 id="条件控制与循环"><a href="#条件控制与循环" class="headerlink" title="条件控制与循环"></a>条件控制与循环</h2><h3 id="条件控制"><a href="#条件控制" class="headerlink" title="条件控制"></a>条件控制</h3><p>最常用的条件控制语句是if语句。if语句用于根据某个条件来执行不同的代码块。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">age = <span class="hljs-number">25</span><br><br><span class="hljs-keyword">if</span> age &lt; <span class="hljs-number">18</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;你还未成年，不得入内。&quot;</span>)<br><span class="hljs-keyword">elif</span> age &gt;= <span class="hljs-number">18</span> <span class="hljs-keyword">and</span> age &lt; <span class="hljs-number">21</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;你已经成年，但还未达到饮酒年龄。&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;欢迎光临。&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>Python中的循环有两种类型：for循环和while循环。for循环用于迭代遍历序列（如列表、元组、字符串）中的每个元素，而while循环则用于在满足条件的情况下重复执行代码块。</p>
+<p>以下是一个使用for循环打印列表中所有元素的示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">fruits = [<span class="hljs-string">&quot;apple&quot;</span>, <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-string">&quot;cherry&quot;</span>]<br><span class="hljs-keyword">for</span> fruit <span class="hljs-keyword">in</span> fruits:<br>    <span class="hljs-built_in">print</span>(fruit)<br></code></pre></td></tr></table></figure>
+
+<p>在此示例中，我们使用for循环遍历了一个名为fruits的列表，并打印了其中的每个元素。</p>
+<p>以下是一个使用while循环计算数字的示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">n = <span class="hljs-number">10</span><br><span class="hljs-built_in">sum</span> = <span class="hljs-number">0</span><br>i = <span class="hljs-number">1</span><br><br><span class="hljs-keyword">while</span> i &lt;= n:<br>    <span class="hljs-built_in">sum</span> += i<br>    i += <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;1到%d的和为：%d&quot;</span> % (n, <span class="hljs-built_in">sum</span>))<br></code></pre></td></tr></table></figure>
+
+<p>使用while循环计算了从1到10的整数之和，并输出了结果。</p>
+<h2 id="子程序设计"><a href="#子程序设计" class="headerlink" title="子程序设计"></a>子程序设计</h2><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>在Python中，我们使用def关键字来定义一个函数，函数的主体被缩进，并在函数名后面跟着一对括号和一个冒号。以下是一个使用函数打印乘法表的示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">multiplication_table</span>(<span class="hljs-params">n</span>):<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n+<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, i+<span class="hljs-number">1</span>):<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%d*%d=%d&quot;</span> % (i, j, i*j), end=<span class="hljs-string">&#x27;\t&#x27;</span>)<br>        <span class="hljs-built_in">print</span>()<br><br>multiplication_table(<span class="hljs-number">9</span>)<br></code></pre></td></tr></table></figure>
+<p>我们定义了一个名为multiplication_table的函数，该函数接受一个整数n作为参数，并打印1到n的乘法表。</p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归是一种常用于解决分治问题的算法，它将问题分解为较小的子问题，并使用相同的算法递归地解决它们，直到子问题变得足够简单，可以直接求解。</p>
+<p>以下是一个使用递归计算阶乘的示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">factorial</span>(<span class="hljs-params">n</span>):<br>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> n * factorial(n-<span class="hljs-number">1</span>)<br><br><span class="hljs-built_in">print</span>(factorial(<span class="hljs-number">5</span>))<br></code></pre></td></tr></table></figure>
+
+<p>我们定义了一个名为factorial的递归函数，该函数接受一个正整数n作为参数，并使用递归的方式计算n的阶乘</p>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>Python是一种面向对象的编程语言，支持封装、继承和多态等面向对象的概念。以下是一个简单的Python面向对象编程的栗子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Animal</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, age</span>):<br>        self.name = name<br>        self.age = age<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">speak</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Dog</span>(<span class="hljs-title class_ inherited__">Animal</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, age, breed</span>):<br>        <span class="hljs-built_in">super</span>().__init__(name, age)<br>        self.breed = breed<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">speak</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;汪汪！&quot;</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Cat</span>(<span class="hljs-title class_ inherited__">Animal</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name, age, color</span>):<br>        <span class="hljs-built_in">super</span>().__init__(name, age)<br>        self.color = color<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">speak</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;喵喵！&quot;</span><br><br>dog = Dog(<span class="hljs-string">&quot;旺财&quot;</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;金毛&quot;</span>)<br>cat = Cat(<span class="hljs-string">&quot;咪咪&quot;</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;白色&quot;</span>)<br><br><span class="hljs-built_in">print</span>(dog.name, dog.age, dog.breed, dog.speak())<br><span class="hljs-built_in">print</span>(cat.name, cat.age, cat.color, cat.speak())<br></code></pre></td></tr></table></figure>
+
+<p>在此示例中，我们定义了一个名为Animal的基类（也称为父类或超类），以及两个名为Dog和Cat的子类（也称为派生类或子类）。每个类都具有自己的属性和方法，可以在实例化对象时进行初始化和访问。</p>
+<p>我们使用super()函数调用父类的构造函数，使用子类的构造函数来初始化子类的属性。在这个例子中，Dog类具有属性breed，而Cat类具有属性color。两个子类都实现了一个名为speak()的方法，该方法返回相应的动物声音。</p>
+<p>在主程序中，我们实例化了一个Dog对象和一个Cat对象，并使用它们的属性和方法来打印它们的信息。</p>
+<p>面向对象编程特点</p>
+<ul>
+<li>可以更好地组织和管理代码</li>
+<li>程序更加灵活和易于扩展</li>
+</ul>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>在Python中，异常处理是一种非常重要的技术，可以帮助我们在程序出现错误时优雅地处理它们，而不会使程序崩溃或停止运行。以下是一个简单的Python异常处理的示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    num1 = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入第一个整数：&quot;</span>))<br>    num2 = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入第二个整数：&quot;</span>))<br>    result = num1 / num2<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;结果为：&quot;</span>, result)<br><span class="hljs-keyword">except</span> ValueError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入不合法，请输入整数！&quot;</span>)<br><span class="hljs-keyword">except</span> ZeroDivisionError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;除数不能为0！&quot;</span>)<br><span class="hljs-keyword">except</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;程序出现错误！&quot;</span>)<br><span class="hljs-keyword">finally</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;感谢使用本程序！&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>在此示例中，我们使用try…except语句来捕获程序可能出现的异常。首先，我们尝试将用户输入的字符串转换为整数，并计算两个整数的商。如果程序出现异常，则程序将跳转到相应的except块，并输出错误信息。如果没有出现异常，则程序将继续执行，并输出结果。无论程序是否出现异常，finally块中的代码都将始终执行。</p>
+<p>在本示例中，我们定义了三个except块来处理可能出现的异常：ValueError（输入不是整数）、ZeroDivisionError（除数为0）和通用异常（其他类型的异常）。通过使用不同的except块，我们可以根据具体情况选择不同的处理方式。</p>
+<p>Python异常处理是一种非常强大和灵活的技术，可以帮助我们更好地处理程序中的错误，避免程序崩溃或停止运行，并提高程序的可靠性和稳定性。</p>
+<h2 id="赋值、浅拷贝与深拷贝"><a href="#赋值、浅拷贝与深拷贝" class="headerlink" title="赋值、浅拷贝与深拷贝"></a>赋值、浅拷贝与深拷贝</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 简单赋值</span><br>a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>b = a<br>b[<span class="hljs-number">0</span>] = <span class="hljs-number">4</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;a = &quot;</span>, a)   <span class="hljs-comment"># a = [4, 2, 3]</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;b = &quot;</span>, b)   <span class="hljs-comment"># b = [4, 2, 3]</span><br></code></pre></td></tr></table></figure>
+<p>用简单赋值将列表a赋值给变量b，然后修改变量b的第一个元素。由于变量b只是变量a的引用，因此变量a和b都将被修改。这种方式被称为浅复制，因为新变量只是原始变量的一个浅层副本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 浅拷贝</span><br>c = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]]<br>d = c.copy()<br>d[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">5</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;c = &quot;</span>, c)   <span class="hljs-comment"># c = [1, 2, [5, 4]]</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;d = &quot;</span>, d)   <span class="hljs-comment"># d = [1, 2, [5, 4]]</span><br></code></pre></td></tr></table></figure>
+<p>使用copy()函数进行浅拷贝，将列表c复制到变量d中。然后，我们修改变量d中的嵌套列表的第一个元素。由于d是c的浅层副本，所以嵌套列表也被修改了。这种方式也被称为浅拷贝，因为它只复制了原始变量的顶层元素，而不是嵌套元素。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 深拷贝</span><br><span class="hljs-keyword">import</span> copy<br>e = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]]<br>f = copy.deepcopy(e)<br>f[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">5</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;e = &quot;</span>, e)   <span class="hljs-comment"># e = [1, 2, [3, 4]]</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;f = &quot;</span>, f)   <span class="hljs-comment"># f = [1, 2, [5, 4]]</span><br></code></pre></td></tr></table></figure>
+<p>使用deepcopy()函数进行深拷贝，将列表e复制到变量f中。然后，我们修改变量f中的嵌套列表的第一个元素。由于f是e的深层副本，所以嵌套列表不会被修改。这种方式被称为深拷贝，因为它复制了整个对象及其嵌套元素。</p>
+<h2 id="常用容器"><a href="#常用容器" class="headerlink" title="常用容器"></a>常用容器</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>列表是Python中最常用的数据结构之一，用于存储一组有序的元素。列表使用数组实现，底层数据结构为动态数组。动态数组是指在数组大小可变的情况下，动态地调整内部数组的大小。列表可以存储任何类型的数据，包括整数、浮点数、字符串和其他对象。</p>
+<p>举例：使用列表来存储一组数字，并对它们进行排序。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numbers = [<span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]<br>numbers.sort()<br><span class="hljs-built_in">print</span>(numbers)  <span class="hljs-comment"># [1, 2, 3, 4, 5]</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>集合是Python中的另一种常用数据结构，用于存储一组无序的元素。集合使用哈希表实现，底层数据结构为哈希表。哈希表是一种使用哈希函数将键映射到存储位置的数据结构。集合中的元素必须是可哈希的，包括数字、字符串和元组等不可变类型。</p>
+<p>举例来说，我们可以使用集合来去重一组数字：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">numbers = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]<br>unique_numbers = <span class="hljs-built_in">set</span>(numbers)<br><span class="hljs-built_in">print</span>(unique_numbers)  <span class="hljs-comment"># &#123;1, 2, 3, 4, 5&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><p>字典是Python中的另一种重要数据结构，用于存储一组键值对。字典使用哈希表实现，底层数据结构为哈希表。字典中的键必须是可哈希的，包括数字、字符串和元组等不可变类型。值可以是任何类型的数据，包括数字、字符串、列表、集合和其他对象。</p>
+<p>举例来说，我们可以使用字典来存储一组单词及其对应的解释：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">words = &#123;<span class="hljs-string">&#x27;apple&#x27;</span>: <span class="hljs-string">&#x27;a fruit&#x27;</span>, <span class="hljs-string">&#x27;banana&#x27;</span>: <span class="hljs-string">&#x27;a fruit&#x27;</span>, <span class="hljs-string">&#x27;carrot&#x27;</span>: <span class="hljs-string">&#x27;a vegetable&#x27;</span>&#125;<br><span class="hljs-built_in">print</span>(words[<span class="hljs-string">&#x27;apple&#x27;</span>])  <span class="hljs-comment"># &#x27;a fruit&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="Python：AI时代的胶水语言"><a href="#Python：AI时代的胶水语言" class="headerlink" title="Python：AI时代的胶水语言"></a>Python：AI时代的胶水语言</h1><p>为何称为胶水语言？</p>
+<ul>
+<li>Python可以方便地将不同的编程语言、框架和库进行结合，从而实现更加复杂的应用程序。</li>
+<li>Python拥有大量的第三方库和工具，这些库和工具可以轻松地集成到Python程序中，并与其他编程语言和系统进行交互。</li>
+</ul>
+<p>Python与数据科学的关系：</p>
+<ul>
+<li>Python是一种功能强大的通用编程语言，具有易于学习、易于阅读和易于编写的特点。</li>
+<li>Python拥有大量的数据科学库和工具，包括NumPy、Pandas、Matplotlib、Scikit-learn和TensorFlow等，这些库可以用于数据分析、机器学习、深度学习和人工智能等领域。</li>
+</ul>
+<p>Python语言的简洁性、易读性、扩展性和丰富的库资源，使其成为数据科学的流行语言之一。Python能够轻松地读取、处理和可视化数据，使得它成为数据科学家、研究人员和工程师的首选语言。同时，Python社区也非常活跃，拥有庞大的开发者和用户社群，为数据科学的应用和创新提供了强大的支持。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>人生苦短，我也要用Python</div>
+      <div>https://liaoweiquan.github.io/2021/05/21/Python初见/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>泉泉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年5月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/31/PTA-%E4%B9%99/" title="PTA-乙">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PTA-乙</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/25/excel%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E4%BE%8B/" title="Excel数据分析实例">
+                        <span class="hidden-mobile">Excel数据分析实例</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://damaohappy.zeabur.app","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+              Fluid.plugins.imageCaption(imgSelector);
+              Fluid.plugins.fancyBox(imgSelector);
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

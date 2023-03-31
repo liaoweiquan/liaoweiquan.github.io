@@ -1,0 +1,908 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <link rel="icon" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="泉泉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="写在前面果然，学完了SQL的我又想来霍霍C语言了～ 环境搭建 MacBookPro 2018 13（丐中丐版）+ Mojeve Xcode (在App Store就可以安装，用Xcode麻烦少很多) CLion（edu邮箱注册，教育优惠可以免费用一年）  配置 CLion启动CLion后在设置中选择”Build, Execution, Deployment“ -&gt; “Toolchains“，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言入门～又爱又恨">
+<meta property="og:url" content="https://liaoweiquan.github.io/2019/03/10/C%E8%AF%AD%E8%A8%80%E5%88%9D%E8%A7%81/index.html">
+<meta property="og:site_name" content="Quan&#39;sRecord">
+<meta property="og:description" content="写在前面果然，学完了SQL的我又想来霍霍C语言了～ 环境搭建 MacBookPro 2018 13（丐中丐版）+ Mojeve Xcode (在App Store就可以安装，用Xcode麻烦少很多) CLion（edu邮箱注册，教育优惠可以免费用一年）  配置 CLion启动CLion后在设置中选择”Build, Execution, Deployment“ -&gt; “Toolchains“，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-10T14:35:17.000Z">
+<meta property="article:modified_time" content="2023-03-05T05:39:06.000Z">
+<meta property="article:author" content="泉泉">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>C语言入门～又爱又恨 - Quan&#39;sRecord</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liaoweiquan.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":40,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Quan&#39;s Record.</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVVpDZ3dJV2g2V2wwVTJDP2U9emp0bHdG.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="C语言入门～又爱又恨"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-03-10 22:35" pubdate>
+          2019年3月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          8.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          72 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C语言入门～又爱又恨</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>果然，学完了SQL的我又想来霍霍C语言了～</p>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><ul>
+<li>MacBookPro 2018 13（丐中丐版）+ Mojeve</li>
+<li><code>Xcode</code> (在App Store就可以安装，用Xcode麻烦少很多)</li>
+<li><code>CLion</code>（edu邮箱注册，教育优惠可以免费用一年）</li>
+</ul>
+<h2 id="配置-CLion"><a href="#配置-CLion" class="headerlink" title="配置 CLion"></a>配置 CLion</h2><p>启动<code>CLion</code>后在设置中选择”<code>Build, Execution, Deployment</code>“ -&gt; “<code>Toolchains</code>“，选择 “<code>Xcode</code>“ 作为默认工具链。</p>
+<h2 id="创建新项目"><a href="#创建新项目" class="headerlink" title="创建新项目"></a>创建新项目</h2><p>在 CLion 中选择 “<code>File</code>“ -&gt; “<code>New Project</code>“，在左侧菜单中选择 “<code>C Executable</code>“。在右侧面板中选择项目名称、路径等信息，并设置工具链为 “<code>Xcode</code>“。</p>
+<h2 id="写代码"><a href="#写代码" class="headerlink" title="写代码"></a>写代码</h2><p>创建一个新的<code>.c</code>文件，输入C语言代码。<code>CLion</code>提供了丰富的代码编辑功能，例如语法高亮、自动补全等。</p>
+<h2 id="构建和运行"><a href="#构建和运行" class="headerlink" title="构建和运行"></a>构建和运行</h2><p>在CLion中选择”<code>Run</code>“ -&gt; “<code>Run</code>“来构建和运行程序。运行之后，程序的输出会显示在控制台窗口。</p>
+<p>需要注意的是，如果在<code>Xcode</code>中安装了其他编译器，也可以在<code>CLion</code>中进行配置并使用。只需在<code>CLion</code>的”<code>Toolchains</code>“ 设置中选择其他编译器即可。</p>
+<h1 id="C语言入坑指南"><a href="#C语言入坑指南" class="headerlink" title="C语言入坑指南"></a>C语言入坑指南</h1><p>首先当然是基本语法：</p>
+<ul>
+<li>C语言中的保留字</li>
+<li>变量、常量</li>
+<li>库函数的使用</li>
+<li>输入、输出</li>
+<li>条件控制</li>
+<li>循环语句</li>
+</ul>
+<p>接着学习更复杂的操作：</p>
+<ul>
+<li>子程序设计、递归</li>
+<li>数组</li>
+<li>指针</li>
+<li>结构体</li>
+<li>文件操作</li>
+</ul>
+<p>其实到了这一步，难度都不会是语言本身，而是算法、数据结构以及计算机基础。</p>
+<h1 id="零碎知识点"><a href="#零碎知识点" class="headerlink" title="零碎知识点"></a>零碎知识点</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>整型变量（int）：整型变量用于存储整数值，可以表示正数、负数和零。</p>
+<p>整型变量在内存中占用固定的字节数，通常是4个字节。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num = <span class="hljs-number">10</span>; <span class="hljs-comment">// 声明一个整型变量num 来存储整数值10。</span><br></code></pre></td></tr></table></figure>
+
+<p>浮点型变量（float和double）：浮点型变量用于存储实数值，可以表示小数和指数形式的数值。</p>
+<p>浮点型变量在内存中占用的字节数通常比整型变量多，因为它们需要存储小数部分。</p>
+<p>C语言提供了两种浮点型变量，分别是单精度浮点型（float）和双精度浮点型（double）。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">double</span> num = <span class="hljs-number">3.14</span>; <span class="hljs-comment">// 声明一个双精度浮点型变量来存储小数值3.14。</span><br></code></pre></td></tr></table></figure>
+
+<p>字符型变量（char）：字符型变量用于存储单个字符，例如字母、数字或标点符号。</p>
+<p>字符型变量在内存中占用1个字节，因为一个字符通常只需要8个比特位来表示。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> ch = <span class="hljs-string">&#x27;A&#x27;</span>; <span class="hljs-comment">// 声明一个字符型变量来存储字符&#x27;A&#x27;。</span><br></code></pre></td></tr></table></figure>
+
+<p>长整型变量（long）：长整型变量用于存储较大的整数值，通常占用8个字节。</p>
+<p>它们比普通整型变量更适合用于存储非常大的整数值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">long</span> num = <span class="hljs-number">1234567890</span>; <span class="hljs-comment">// 声明一个长整型变量来存储整数值1234567890。</span><br></code></pre></td></tr></table></figure>
+
+
+<p>短整型变量（short）：短整型变量用于存储较小的整数值，通常占用2个字节。</p>
+<p>它们比普通整型变量更适合用于存储非常小的整数值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">short</span> num = <span class="hljs-number">10</span>; <span class="hljs-comment">// 声明一个短整型变量来存储整数值10。</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>常量是指在程序运行时其值不会发生变化的量，它们可以帮助我们简化代码和提高程序的可读性。常量可以是整数、浮点数、字符或字符串等类型。</p>
+<p>1、整数常量</p>
+<p>整数常量是指不带小数部分的数字，可以是正数、负数或零。在C语言中，整数常量默认是十进制数，也可以使用其他进制表示。下面是几个整数常量的例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-number">42</span>   <span class="hljs-comment">// 十进制整数常量</span><br><span class="hljs-number">-15</span>  <span class="hljs-comment">// 负整数常量</span><br><span class="hljs-number">0x7F</span> <span class="hljs-comment">// 十六进制整数常量</span><br><span class="hljs-number">0</span>o57  <span class="hljs-comment">// 八进制整数常量</span><br></code></pre></td></tr></table></figure>
+
+<p>2、浮点数常量<br>浮点数常量是指带有小数部分的数字，可以是单精度浮点数（float）或双精度浮点数（double）。在C语言中，可以使用小数点或指数形式来表示浮点数常量。下面是几个浮点数常量的例子。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-number">3.14159</span>      <span class="hljs-comment">// 单精度浮点数常量</span><br><span class="hljs-number">2.99792e+8</span>   <span class="hljs-comment">// 科学计数法表示的单精度浮点数常量</span><br><span class="hljs-number">1.234567890</span>  <span class="hljs-comment">// 双精度浮点数常量</span><br><span class="hljs-number">-6.02214076e+23</span> <span class="hljs-comment">// 科学计数法表示的双精度浮点数常量</span><br></code></pre></td></tr></table></figure>
+
+<p>3、字符常量<br>字符常量是指用单引号括起来的单个字符，例如字母、数字或标点符号。在C语言中，每个字符常量在内存中占用一个字节，可以使用转义字符来表示一些特殊的字符。下面是几个字符常量的例子。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-string">&#x27;A&#x27;</span> <span class="hljs-comment">// 字符常量</span><br><span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-comment">// 数字字符常量</span><br><span class="hljs-string">&#x27;\n&#x27;</span> <span class="hljs-comment">// 换行符</span><br><span class="hljs-string">&#x27;\t&#x27;</span> <span class="hljs-comment">// 制表符</span><br><span class="hljs-string">&#x27;\\&#x27;</span> <span class="hljs-comment">// 反斜杠</span><br><span class="hljs-string">&#x27;\&quot;&#x27;</span> <span class="hljs-comment">// 双引号</span><br></code></pre></td></tr></table></figure>
+
+<p>4、字符串常量<br>字符串常量是指由一串字符组成的字符数组，用双引号括起来。在C语言中，字符串常量以空字符（’\0’）结尾，占用的内存空间根据字符串的长度而定。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-string">&quot;Hello, world!&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>5、const关键字来定义常量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">const</span> <span class="hljs-type">int</span> NUM = <span class="hljs-number">42</span>;<br></code></pre></td></tr></table></figure>
+<p>试图修改这个常量时，编译器会报错</p>
+<p>6、宏定义常量</p>
+<p>使用#define预处理指令来为一个符号（通常是一个常量）定义一个标识符，以后使用该标识符时，预处理器会自动将其替换成所定义的值。下面是一个宏定义常量的例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> PI 3.14159</span><br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们定义了一个名为PI的常量，它的值为3.14159。在程序中，我们可以直接使用PI这个标识符来表示这个常量，例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> area = PI * radius * radius;<br></code></pre></td></tr></table></figure>
+
+<p>在预处理之后，这个表达式会被替换成：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> area = <span class="hljs-number">3.14159</span> * radius * radius;<br></code></pre></td></tr></table></figure>
+
+<p>需要注意的是，宏定义是一种纯文本替换，没有数据类型，也没有作用域限制，因此它的使用可能会带来一些问题。比如，如果我们定义了一个整数常量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> SIZE 10</span><br></code></pre></td></tr></table></figure>
+
+<p>在程序中使用这个常量时，如果不小心将它和一个整数变量相加，就可能会出现不正确的结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a[SIZE + <span class="hljs-number">2</span>]; <span class="hljs-comment">// 正确</span><br><span class="hljs-type">int</span> b[SIZE] + <span class="hljs-number">2</span>; <span class="hljs-comment">// 错误</span><br></code></pre></td></tr></table></figure>
+<p>为了避免这种问题，建议使用const关键字来定义常量，const定义的常量有数据类型和作用域限制，可以更好地保护程序的正确性和可读性。</p>
+<h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><p>包含头文件。举例，如果要使用数学库中的函数，则需要包含math.h头文件。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;math.h&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p>调用库函数。包含math.h头文件后，可以在程序中调用库中的函数。</p>
+<p>可以调用数学库中的sin函数来计算正弦值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">double</span> result = <span class="hljs-built_in">sin</span>(<span class="hljs-number">0.5</span>);<br></code></pre></td></tr></table></figure>
+<p>至于该使用哪些库、哪些函数，可以去查找文档或者直接在百度搜。</p>
+<h2 id="输入输出（IO）"><a href="#输入输出（IO）" class="headerlink" title="输入输出（IO）"></a>输入输出（IO）</h2><p>printf() 函数用于向屏幕输出文本：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>scanf() 函数用于从用户输入中读取值：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> num;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter a number: &quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;num);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The number is: %d&quot;</span>, num);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="条件控制"><a href="#条件控制" class="headerlink" title="条件控制"></a>条件控制</h2><p>if-else 语句用于根据条件执行不同的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> num;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter a number: &quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;num);<br>    <span class="hljs-keyword">if</span> (num &gt; <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The number is positive&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The number is negative&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>switch-case</code>语句也用于根据不同的条件执行不同的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">char</span> grade;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter your grade: &quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%c&quot;</span>, &amp;grade);<br>    <span class="hljs-keyword">switch</span>(grade)<br>    &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;A&#x27;</span>:<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Excellent&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;B&#x27;</span>:<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Good&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;C&#x27;</span>:<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Fair&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;D&#x27;</span>:<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Poor&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Invalid grade&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>for循环用于执行指定次数的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>while</code>和<code>do-while</code>循环用于在条件为真时重复执行代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> num;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter a number: &quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;num);<br>    <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, num);<br>        num--;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> num;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Enter a number: &quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;num);<br>    <span class="hljs-keyword">do</span> &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, num);<br>        num--;<br>    &#125; <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="子程序设计"><a href="#子程序设计" class="headerlink" title="子程序设计"></a>子程序设计</h2><p>函数是C语言中的一种子程序。函数可以将程序分解为更小、更易于管理的块，从而使代码更易于理解和调试。</p>
+<p>下面是一个例子，展示如何定义和调用一个函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">addNumbers</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span>;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> num1 = <span class="hljs-number">5</span>, num2 = <span class="hljs-number">7</span>, sum;<br>    sum = addNumbers(num1, num2);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Sum of %d and %d is %d&quot;</span>, num1, num2, sum);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">addNumbers</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span><br>&#123;<br>    <span class="hljs-type">int</span> result;<br>    result = a + b;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归是一种函数调用自身的技术。它通常用于解决需要重复执行相同或类似操作的问题。</p>
+<p>下面是一个例子，展示如何使用递归来计算阶乘：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">factorial</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span>;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> num = <span class="hljs-number">5</span>, fact;<br>    fact = factorial(num);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Factorial of %d is %d&quot;</span>, num, fact);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">factorial</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span><br>&#123;<br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>)<br>    &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> n * factorial(n<span class="hljs-number">-1</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在这个例子中，<code>factorial()</code>函数使用递归调用自身来计算n的阶乘。在每个递归调用中，函数将n乘以<code>factorial(n-1)</code>，直到n等于1。最后，递归调用返回到原始函数调用，并将计算的阶乘作为结果返回给主函数。</p>
+<h2 id="数组和指针"><a href="#数组和指针" class="headerlink" title="数组和指针"></a>数组和指针</h2><p>数组</p>
+<ul>
+<li>数组是一种数据结构，可以存储多个相同类型的元素。</li>
+<li>在C语言中，数组的元素可以是任何基本数据类型，如整数、浮点数、字符等。</li>
+<li>在声明数组时，需要指定数组的大小。例如，下面是一个包含10个整数的数组的声明：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> myArray[<span class="hljs-number">10</span>];<br></code></pre></td></tr></table></figure>
+<ul>
+<li>数组元素的访问是通过下标来实现的，下标从0开始，表示数组中的第一个元素。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">myArray[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>; <span class="hljs-comment">// 将第一个元素设置为1</span><br></code></pre></td></tr></table></figure></li>
+<li>数组可以用于存储一系列数据，例如数字、字符串等。</li>
+</ul>
+<p>指针</p>
+<ul>
+<li>指针是一个变量，它存储了一个内存地址。</li>
+<li>指针可以指向任何数据类型，例如整数、字符、数组等。</li>
+<li>指针的声明需要指定指针所指向的数据类型。例如，下面是一个指向整数的指针的声明：<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *myPointer;<br></code></pre></td></tr></table></figure></li>
+<li>指针可以用于访问和修改存储在内存中的变量或数组元素的值。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> myArray[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>&#125;;<br><span class="hljs-type">int</span> *myPointer = &amp;myArray[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 指向数组的第一个元素</span><br>*myPointer = <span class="hljs-number">2</span>; <span class="hljs-comment">// 修改第一个元素的值</span><br></code></pre></td></tr></table></figure></li>
+<li>指针可以用于动态分配内存，例如使用malloc函数来分配内存<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *myPointer = (<span class="hljs-type">int</span>*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>)*<span class="hljs-number">10</span>); <span class="hljs-comment">// 分配包含10个整数的内存空间</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><p>在C语言中，结构体是一种自定义的数据类型，它允许程序员将不同类型的数据组合在一起，并赋予这个组合一个自定义的名字。结构体由多个变量组成，每个变量被称为结构体的成员。结构体成员可以是各种数据类型，包括整型、浮点型、字符型等等。</p>
+<p>下面是一个简单的例子，其中定义了一个名为Person的结构体，它包含了三个成员：<code>name</code>表示人名，<code>age</code>表示年龄，<code>gender</code>表示性别。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">char</span> gender;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>定义了这个结构体之后，我们可以使用它来创建一个结构体变量，并访问它的成员。例如，下面的代码创建了一个名为<code>person1</code>的<code>Person</code>类型的变量，并初始化了它的成员。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> <span class="hljs-title">person1</span> =</span> &#123;<span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-string">&#x27;F&#x27;</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们使用了结构体初始化语法来给<code>person1</code>赋值。也可以通过点号运算符来访问结构体成员，例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Name: %s\n&quot;</span>, person1.name);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Age: %d\n&quot;</span>, person1.age);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Gender: %c\n&quot;</span>, person1.gender);<br></code></pre></td></tr></table></figure>
+
+<p>输出为：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Name:</span> Alice<br><span class="hljs-symbol">Age:</span> <span class="hljs-number">25</span><br><span class="hljs-symbol">Gender:</span> F<br></code></pre></td></tr></table></figure>
+
+<h2 id="结构体数组"><a href="#结构体数组" class="headerlink" title="结构体数组"></a>结构体数组</h2><p>当我们需要定义一组相似结构体变量时，可以使用结构体数组。下面是一个例子，其中定义了一个名为<code>Student</code>的结构体，它包含了两个成员：<code>name</code>表示学生姓名，<code>score</code>表示学生的分数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> score;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>接下来，我们可以定义一个<code>Student</code>类型的结构体数组，其中包含三个学生的信息。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">students</span>[3] =</span> &#123;<br>    &#123;<span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-number">90</span>&#125;,<br>    &#123;<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-number">85</span>&#125;,<br>    &#123;<span class="hljs-string">&quot;Charlie&quot;</span>, <span class="hljs-number">95</span>&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们定义了一个名为<code>students</code>的结构体数组，它包含了三个<code>Student</code>类型的结构体变量，并用结构体初始化语法对它们进行了初始化。</p>
+<p>我们可以通过循环遍历结构体数组，并使用点号运算符来访问每个学生的姓名和分数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Name: %s, Score: %d\n&quot;</span>, students[i].name, students[i].score);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>输出为：</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sqf"><span class="hljs-built_in">Name</span>: Alice, <span class="hljs-built_in">Score</span>: <span class="hljs-number">90</span><br><span class="hljs-built_in">Name</span>: Bob, <span class="hljs-built_in">Score</span>: <span class="hljs-number">85</span><br><span class="hljs-built_in">Name</span>: Charlie, <span class="hljs-built_in">Score</span>: <span class="hljs-number">95</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>首先创建一个名为<code>data.txt</code>的文本文件，并将一些数据写入该文件。</p>
+<p>然后，我们将使用C语言中的文件读写函数来读取该文件的内容并打印出来。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 创建一个文件指针，并打开 data.txt 文件以进行写操作</span><br>    FILE *fp = fopen(<span class="hljs-string">&quot;data.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>);<br><br>    <span class="hljs-comment">// 写入数据到文件中</span><br>    <span class="hljs-built_in">fprintf</span>(fp, <span class="hljs-string">&quot;Hello, World!\n&quot;</span>);<br>    <span class="hljs-built_in">fprintf</span>(fp, <span class="hljs-string">&quot;This is a test.\n&quot;</span>);<br><br>    <span class="hljs-comment">// 关闭文件指针</span><br>    fclose(fp);<br><br>    <span class="hljs-comment">// 重新打开 data.txt 文件以进行读操作</span><br>    fp = fopen(<span class="hljs-string">&quot;data.txt&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>);<br><br>    <span class="hljs-comment">// 从文件中读取数据，并输出到屏幕上</span><br>    <span class="hljs-type">char</span> buffer[<span class="hljs-number">100</span>];<br>    <span class="hljs-keyword">while</span> (fgets(buffer, <span class="hljs-number">100</span>, fp) != <span class="hljs-literal">NULL</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>, buffer);<br>    &#125;<br><br>    <span class="hljs-comment">// 关闭文件指针</span><br>    fclose(fp);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>首先创建了一个名为<code>data.txt</code>的文本文件，并将两行数据写入该文件中。然后，我们使用<code>fopen()</code>函数打开该文件，将文件指针存储在fp变量中，并使用<code>fprintf()</code>函数将数据写入该文件。</p>
+<p>在写入完数据之后，我们使用<code>fclose()</code>函数关闭文件指针。</p>
+<p>接下来，我们重新打开<code>data.txt</code>文件以进行读操作。使用<code>fopen()</code>函数打开文件时，我们将第二个参数设置为r，表示以只读模式打开文件。然后，我们使用<code>fgets()</code>函数从文件中读取数据，并将读取的数据输出到屏幕上。</p>
+<p>最后，我们再次使用<code>fclose()</code>函数关闭文件指针。</p>
+<p>需要注意的是，在进行文件读写操作时，我们需要确保正确地打开和关闭文件指针，并对可能发生的错误进行适当的处理。</p>
+<h2 id="关于C语言的异常处理"><a href="#关于C语言的异常处理" class="headerlink" title="关于C语言的异常处理"></a>关于C语言的异常处理</h2><p>注意，C语言本身不支持像其他一些语言（如Java和Python）那样的异常处理机制，但我们可以使用C语言中的一些技巧来模拟异常处理。</p>
+<p>一个常见的做法是在代码中使用返回值来指示错误状态，并在发生错误时采取适当的行动。下面是一个简单的例子，演示了如何使用返回值来模拟异常处理。</p>
+<p>在这个例子中，我们将定义一个名为<code>divide()</code>的函数，该函数将两个整数相除，并返回结果。如果第二个参数为零，则表示除法操作不合法，此时我们将返回一个特殊的错误码<code>-1</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">divide</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> *result)</span> &#123;<br>    <span class="hljs-keyword">if</span> (b == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        *result = a / b;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> a = <span class="hljs-number">10</span>, b = <span class="hljs-number">0</span>, result;<br>    <span class="hljs-type">int</span> status = divide(a, b, &amp;result);<br>    <span class="hljs-keyword">if</span> (status == <span class="hljs-number">-1</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Error: Division by zero.\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d / %d = %d\n&quot;</span>, a, b, result);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们定义了一个名为<code>divide()</code>的函数，它将两个整数a和b相除，并将结果存储在指向<code>result</code>变量的指针中。如果b为零，则函数返回-1，表示除法操作不合法。</p>
+<p>在<code>main()</code>函数中，我们将<code>a</code>设置为10，将<code>b</code>设置为0，并调用<code>divide()</code>函数进行除法操作。如果除法操作不合法，则函数将返回-1，此时我们将打印一条错误消息。否则，我们将打印计算结果。</p>
+<p>通过在代码中使用返回值来模拟异常处理，我们可以在发生错误时采取适当的行动，并对用户提供友好的错误消息。当然，这种做法要求我们对可能出现的错误情况进行仔细的考虑，并在代码中进行适当的处理。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
+      
+        <a href="/tags/C%E8%AF%AD%E8%A8%80/">#C语言</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>C语言入门～又爱又恨</div>
+      <div>https://liaoweiquan.github.io/2019/03/10/C语言初见/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>泉泉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年3月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/06/30/%E6%B4%9B%E8%B0%B7%E5%88%B7%E9%A2%98/" title="刷题也是一种成就感（Hi～洛谷）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">刷题也是一种成就感（Hi～洛谷）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/01/25/%E5%B8%B8%E7%94%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%BB%84%E4%BB%B6/" title="数据库与大数据技术">
+                        <span class="hidden-mobile">数据库与大数据技术</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://damaohappy.zeabur.app","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+              Fluid.plugins.imageCaption(imgSelector);
+              Fluid.plugins.fancyBox(imgSelector);
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

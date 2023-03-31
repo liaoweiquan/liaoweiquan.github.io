@@ -1,0 +1,862 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <link rel="icon" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="泉泉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="写在前面学习C语言怎么能不写代码呢～ 不是说好了洛谷是入门吗（怎么这么难） 题解B2002 Hello,World!原题链接 输出“Hello,World!” 不能再简单了～ 12345678#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;int main() &amp;#123;    printf(&quot;Hello,World!&quot;);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="刷题也是一种成就感（Hi～洛谷）">
+<meta property="og:url" content="https://liaoweiquan.github.io/2019/06/30/%E6%B4%9B%E8%B0%B7%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:site_name" content="Quan&#39;sRecord">
+<meta property="og:description" content="写在前面学习C语言怎么能不写代码呢～ 不是说好了洛谷是入门吗（怎么这么难） 题解B2002 Hello,World!原题链接 输出“Hello,World!” 不能再简单了～ 12345678#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;int main() &amp;#123;    printf(&quot;Hello,World!&quot;);">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-30T15:50:10.000Z">
+<meta property="article:modified_time" content="2023-03-13T04:43:11.000Z">
+<meta property="article:author" content="泉泉">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>刷题也是一种成就感（Hi～洛谷） - Quan&#39;sRecord</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liaoweiquan.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":40,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Quan&#39;s Record.</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVVpDZ3dJV2g2V2wwVTJDP2U9emp0bHdG.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="刷题也是一种成就感（Hi～洛谷）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-06-30 23:50" pubdate>
+          2019年6月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          116 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">刷题也是一种成就感（Hi～洛谷）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>学习C语言怎么能不写代码呢～</p>
+<p>不是说好了洛谷是入门吗（<del>怎么这么难</del>）</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="B2002-Hello-World"><a href="#B2002-Hello-World" class="headerlink" title="B2002 Hello,World!"></a>B2002 Hello,World!</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B2002">原题链接</a></p>
+<p>输出“Hello,World!”</p>
+<p>不能再简单了～</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello,World!&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="B2005-字符三角形"><a href="#B2005-字符三角形" class="headerlink" title="B2005 字符三角形"></a>B2005 字符三角形</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B2005">原题链接</a></p>
+<p>打印等腰三角形</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> l=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">char</span> z;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%c&quot;</span>,&amp;z);<br>    <span class="hljs-keyword">while</span>(l&lt;<span class="hljs-number">3</span>)&#123;<br>        <span class="hljs-type">int</span> k=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(k&lt;=<span class="hljs-number">2</span>-l)&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);<br>            k++;<br>        &#125;<br>        <span class="hljs-type">int</span> x=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(x&lt;=<span class="hljs-number">2</span>*l+<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>,z);<br>            x++;<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>        l++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="B2025-输出字符菱形"><a href="#B2025-输出字符菱形" class="headerlink" title="B2025 输出字符菱形"></a>B2025 输出字符菱形</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B2025">原题链接</a></p>
+<p>打印字符菱形</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-type">int</span> l=<span class="hljs-number">0</span>;<br>   <span class="hljs-keyword">while</span>(l&lt;<span class="hljs-number">3</span>)&#123;<br>       <span class="hljs-type">int</span> k=<span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">while</span>(k&lt;=<span class="hljs-number">2</span>-l)&#123;<br>           <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);<br>           k++;<br>       &#125;<br>       <span class="hljs-type">int</span> x=<span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">while</span>(x&lt;=<span class="hljs-number">2</span>*l+<span class="hljs-number">1</span>)&#123;<br>           <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*&quot;</span>);<br>           x++;<br>       &#125;<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>       l++;<br>   &#125;<br>   l=<span class="hljs-number">1</span>;<br>   <span class="hljs-keyword">while</span>(l&lt;=<span class="hljs-number">2</span>)&#123;<br>       <span class="hljs-type">int</span> a=<span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">while</span>(a&lt;=l)&#123;<br>           <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);<br>           a++;<br>       &#125;<br>       <span class="hljs-type">int</span> b=<span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">while</span>(b&lt;=<span class="hljs-number">5</span><span class="hljs-number">-2</span>*l)&#123;<br>           <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*&quot;</span>);<br>           b++;<br>       &#125;<br>       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>    l++;<br>   &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="B2029-大象喝水"><a href="#B2029-大象喝水" class="headerlink" title="B2029 大象喝水"></a>B2029 大象喝水</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/B2029">原题链接</a></p>
+<p>简单计算题。注意C语言中的除法。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pi 3.14</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> r,h,x;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;h,&amp;r);<br>    <span class="hljs-type">double</span> v=r*pi*r*h;<br>    x=<span class="hljs-number">20000</span>/v+<span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,x);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1001-A-B-Problem"><a href="#P1001-A-B-Problem" class="headerlink" title="P1001 A+B Problem"></a>P1001 A+B Problem</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1001">原题链接</a></p>
+<p>A+B</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-type">int</span> a,b,s;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;a,&amp;b);<br>    s=a+b;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,s);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1035-NOIP2002-普及组-级数求和"><a href="#P1035-NOIP2002-普及组-级数求和" class="headerlink" title="P1035 [NOIP2002 普及组] 级数求和"></a>P1035 [NOIP2002 普及组] 级数求和</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1035">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> k,i=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">double</span> s=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;k);<br>    <span class="hljs-keyword">while</span> (s&lt;k)&#123;<br>        i++;<br>        s+=<span class="hljs-number">1</span>/(<span class="hljs-type">double</span>)i;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (k==<span class="hljs-number">1</span>) i=<span class="hljs-number">2</span>;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,i);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1046-NOIP2005-普及组-陶陶摘苹果"><a href="#P1046-NOIP2005-普及组-陶陶摘苹果" class="headerlink" title="P1046 [NOIP2005 普及组] 陶陶摘苹果"></a>P1046 [NOIP2005 普及组] 陶陶摘苹果</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1046">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a[<span class="hljs-number">10</span>],tth;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)&#123;<br>        <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>    &#125;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;tth);<br>    <span class="hljs-type">int</span> h=tth+<span class="hljs-number">30</span>;<br>    <span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">10</span>;k++)&#123;<br>        <span class="hljs-keyword">if</span> (h&gt;=a[k])<br>        cnt++;<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,cnt);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="P1085-NOIP2004-普及组-不高兴的津津"><a href="#P1085-NOIP2004-普及组-不高兴的津津" class="headerlink" title="P1085 [NOIP2004 普及组] 不高兴的津津"></a>P1085 [NOIP2004 普及组] 不高兴的津津</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1085">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> sh,mh,h=<span class="hljs-number">0</span>,d=<span class="hljs-number">0</span>,s=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">8</span>;++i)&#123;<br>        <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;sh,&amp;mh);<br>        h=sh+mh;<br>        <span class="hljs-keyword">if</span> (h&gt;<span class="hljs-number">8</span>)&#123;<br>           <span class="hljs-keyword">if</span> (d==<span class="hljs-number">0</span>) &#123;<br>               d=i,s=h;<br>           &#125;<br>           <span class="hljs-keyword">else</span>&#123;<br>               <span class="hljs-keyword">if</span>(h&gt;s)&#123;<br>               d=i,s=h;&#125;<br>           &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (d==<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;0&quot;</span>);<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,d);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1089-NOIP2004-提高组-津津的储蓄计划"><a href="#P1089-NOIP2004-提高组-津津的储蓄计划" class="headerlink" title="P1089 [NOIP2004 提高组] 津津的储蓄计划"></a>P1089 [NOIP2004 提高组] 津津的储蓄计划</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1089">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a[<span class="hljs-number">13</span>],u=<span class="hljs-number">0</span>,s=<span class="hljs-number">0</span>,q=<span class="hljs-number">0</span>;<span class="hljs-comment">//u余额，s存钱，q本月预算</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">13</span>;i++)&#123;<br>        <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>    &#125;<br>    <span class="hljs-type">int</span> x=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>  (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">13</span>;i++)&#123;<br>        q=<span class="hljs-number">300</span>+u;<br>        <span class="hljs-keyword">if</span> (q-a[i]&gt;=<span class="hljs-number">0</span>)&#123;<br>           u=q-a[i];<br>           <span class="hljs-keyword">if</span> (u/<span class="hljs-number">100</span>&gt;<span class="hljs-number">0</span>)&#123;<br>               s+=u/<span class="hljs-number">100</span>*<span class="hljs-number">100</span>;<br>               u%=<span class="hljs-number">100</span>;<br>           &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;-%d&quot;</span>,i);<br>            x=<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (x==<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,s*<span class="hljs-number">12</span>/<span class="hljs-number">10</span>+u);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1307-NOIP2011-普及组-数字反转"><a href="#P1307-NOIP2011-普及组-数字反转" class="headerlink" title="P1307 [NOIP2011 普及组] 数字反转"></a>P1307 [NOIP2011 普及组] 数字反转</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1307">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-type">int</span> a;<span class="hljs-comment">//输出</span><br>    <span class="hljs-keyword">if</span> (n&lt;<span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;-&quot;</span>);<span class="hljs-comment">//先输出负号</span><br>        n=-n;&#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n==<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;0&quot;</span>);<br>     <span class="hljs-type">int</span> c=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (n&gt;<span class="hljs-number">0</span>)&#123;<br>        a=n%<span class="hljs-number">10</span>;<br>       <br>        <span class="hljs-keyword">if</span> (a!=<span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,a);<br>            c=<span class="hljs-number">1</span>;<span class="hljs-comment">//a不为0就令c=1</span><br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c==<span class="hljs-number">1</span>) <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,a);<span class="hljs-comment">//a为0 看看之前有没有输出</span><br>        n/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1420-最长连号"><a href="#P1420-最长连号" class="headerlink" title="P1420 最长连号"></a>P1420 最长连号</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1420">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n,max=<span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d\n&quot;</span>,&amp;n);<br>    <span class="hljs-type">int</span> a[n],c[n];<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[<span class="hljs-number">0</span>]);<br>    c[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++)&#123;<br>        c[i]=<span class="hljs-number">1</span>;<br>        <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        <span class="hljs-keyword">if</span> (a[i]==a[i<span class="hljs-number">-1</span>]+<span class="hljs-number">1</span>)&#123;<br>            c[i]=c[i<span class="hljs-number">-1</span>]+<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (c[i]&gt;max) max=c[i];<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,max); <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1421-小玉买文具"><a href="#P1421-小玉买文具" class="headerlink" title="P1421 小玉买文具"></a>P1421 小玉买文具</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1421">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a,b;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,(a*<span class="hljs-number">10</span>+b)/<span class="hljs-number">19</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1422-小玉家的电费"><a href="#P1422-小玉家的电费" class="headerlink" title="P1422 小玉家的电费"></a>P1422 小玉家的电费</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1422">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-type">double</span> m,a[<span class="hljs-number">3</span>]=&#123;<span class="hljs-number">0.4463</span>,<span class="hljs-number">0.4663</span>,<span class="hljs-number">0.5663</span>&#125;;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">if</span> (n&lt;<span class="hljs-number">150</span>) &#123;<br>    m=a[<span class="hljs-number">0</span>]*n;<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (n&gt;<span class="hljs-number">151</span>&amp;n&lt;<span class="hljs-number">400</span>)&#123;<br>            m=<span class="hljs-number">150</span>*a[<span class="hljs-number">0</span>]+(n<span class="hljs-number">-150</span>)*a[<span class="hljs-number">1</span>];<br>    &#125;<br>    <span class="hljs-keyword">else</span> m=<span class="hljs-number">150</span>*a[<span class="hljs-number">0</span>]+(<span class="hljs-number">400</span><span class="hljs-number">-150</span>)*a[<span class="hljs-number">1</span>]+(n<span class="hljs-number">-400</span>)*a[<span class="hljs-number">2</span>];<br>     <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%.1lf&quot;</span>,m);       <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1423-小玉在游泳"><a href="#P1423-小玉在游泳" class="headerlink" title="P1423 小玉在游泳"></a>P1423 小玉在游泳</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1423">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">const</span> <span class="hljs-type">double</span> k=<span class="hljs-number">0.98</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>   <span class="hljs-type">double</span> s,l=<span class="hljs-number">2</span>,x=<span class="hljs-number">2</span>;<br>   <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%lf&quot;</span>,&amp;s);<br>   <span class="hljs-keyword">if</span> (s==<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;0&quot;</span>);<br>   <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s&lt;=<span class="hljs-number">2</span>) <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;1&quot;</span>);<br>   <span class="hljs-keyword">else</span>&#123;<br>       <span class="hljs-type">int</span> c=<span class="hljs-number">1</span>;<br>       <span class="hljs-keyword">while</span> (l&lt;s)&#123;<br>           c++;<br>           x*=k;<br>            l+=x;<br>        &#125;<br>   <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,c);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1424-小鱼的航程-改进版"><a href="#P1424-小鱼的航程-改进版" class="headerlink" title="P1424 小鱼的航程(改进版)"></a>P1424 小鱼的航程(改进版)</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1424">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> x,n;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;x,&amp;n);<br>    <span class="hljs-comment">//第一周 5-x,</span><br>    <span class="hljs-type">int</span> fn;<br>    <span class="hljs-keyword">if</span>(x&gt;<span class="hljs-number">5</span>) fn=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">else</span> fn=<span class="hljs-number">5</span>-x+<span class="hljs-number">1</span>;<br>    <br>    <span class="hljs-type">int</span> sn=n-(<span class="hljs-number">8</span>-x);<br>    <span class="hljs-type">int</span> w=sn/<span class="hljs-number">7</span>,sw=sn%<span class="hljs-number">7</span>;<br>    <span class="hljs-comment">//s是有几周 sw=剩的天数</span><br>    <span class="hljs-keyword">if</span> (sw&gt;<span class="hljs-number">5</span>) sw=<span class="hljs-number">5</span>;<br>    <span class="hljs-type">int</span> s=(fn+w*<span class="hljs-number">5</span>+sw)*<span class="hljs-number">250</span>;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,s);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1425-小鱼的游泳时间"><a href="#P1425-小鱼的游泳时间" class="headerlink" title="P1425 小鱼的游泳时间"></a>P1425 小鱼的游泳时间</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1425">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;math.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a,b,c,d,e=<span class="hljs-number">0</span>,f=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d %d %d&quot;</span>,&amp;a,&amp;b,&amp;c,&amp;d);<br>    <span class="hljs-keyword">if</span>(d&gt;=b)&#123;<br>        e=c-a,f=d-b;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>      e=c-a<span class="hljs-number">-1</span>,f=<span class="hljs-number">60</span>-b+d;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,e,f);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1888-三角函数"><a href="#P1888-三角函数" class="headerlink" title="P1888 三角函数"></a>P1888 三角函数</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1888">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a[<span class="hljs-number">3</span>];<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d %d&quot;</span>,&amp;a[<span class="hljs-number">0</span>],&amp;a[<span class="hljs-number">1</span>],&amp;a[<span class="hljs-number">2</span>]);<br>    <span class="hljs-type">int</span> minx=a[<span class="hljs-number">0</span>],maxx=a[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)&#123;<br>        <span class="hljs-keyword">if</span> (a[i]&lt;minx)<br>        minx=a[i];<br>        <span class="hljs-keyword">if</span> (a[i]&gt;maxx)<br>        maxx=a[i];<br>    &#125;<br>    <span class="hljs-type">int</span> x=minx,y=maxx;<br>    <span class="hljs-keyword">while</span> (y%x!=<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-type">int</span> u=y%x;<br>    y=x,x=u;<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d/%d&quot;</span>,minx/x,maxx/x);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1909-NOIP2016-普及组-买铅笔"><a href="#P1909-NOIP2016-普及组-买铅笔" class="headerlink" title="P1909 [NOIP2016 普及组] 买铅笔"></a>P1909 [NOIP2016 普及组] 买铅笔</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1909">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n,s[<span class="hljs-number">3</span>],j[<span class="hljs-number">3</span>],m[<span class="hljs-number">3</span>],c[<span class="hljs-number">3</span>];<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)&#123;<br>        <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;s[i],&amp;j[i]);<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)&#123;<br>        <span class="hljs-keyword">if</span> (n%s[i]==<span class="hljs-number">0</span>)&#123;<br>            c[i]=n/s[i];<br>        &#125;<span class="hljs-keyword">else</span> c[i]=n/s[i]+<span class="hljs-number">1</span>;<br>        m[i]=j[i]*c[i];<br>    &#125;<br>    <span class="hljs-type">int</span> min=m[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">3</span>;i++)&#123;<br>        <span class="hljs-keyword">if</span> (m[i]&lt;min)<br>        min=m[i];<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,min);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1980-NOIP2013-普及组-计数问题"><a href="#P1980-NOIP2013-普及组-计数问题" class="headerlink" title="P1980 [NOIP2013 普及组] 计数问题"></a>P1980 [NOIP2013 普及组] 计数问题</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1980">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n,x;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;n,&amp;x);<br>   <span class="hljs-comment">// if (n&lt;x) printf (&quot;0&quot;);</span><br>    <span class="hljs-comment">//else&#123;</span><br>        <span class="hljs-type">int</span> c=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>            <span class="hljs-type">int</span> t=i;<br>           <span class="hljs-keyword">while</span> (t&gt;<span class="hljs-number">0</span>)&#123;<br>               <span class="hljs-type">int</span> u=t%<span class="hljs-number">10</span>;<br>               <span class="hljs-keyword">if</span> (u==x) c++;<br>               t/=<span class="hljs-number">10</span>;<br>           &#125; <br>        &#125;<br>        <span class="hljs-comment">//if (x!=0) c++;</span><br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,c);<br>    <span class="hljs-comment">//&#125;</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P3954-NOIP2017-普及组-成绩"><a href="#P3954-NOIP2017-普及组-成绩" class="headerlink" title="P3954 [NOIP2017 普及组] 成绩"></a>P3954 [NOIP2017 普及组] 成绩</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3954">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a,b,c;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,&amp;a,&amp;b,&amp;c);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,(<span class="hljs-type">int</span>)(<span class="hljs-number">0.2</span>*a+<span class="hljs-number">0.3</span>*b+<span class="hljs-number">0.5</span>*c));<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P2669-NOIP2015-普及组-金币"><a href="#P2669-NOIP2015-普及组-金币" class="headerlink" title="P2669 [NOIP2015 普及组] 金币"></a>P2669 [NOIP2015 普及组] 金币</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2669">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> k,s=<span class="hljs-number">0</span>,i=<span class="hljs-number">1</span>,u=<span class="hljs-number">0</span>;<span class="hljs-comment">//s 金币数; i周期;j 天数;u 剩余天数</span><br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;k);<br>    <span class="hljs-keyword">while</span> (i*(i+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>&lt;k)&#123;<br>        s+=i*i;<br><span class="hljs-comment">//        printf (&quot;i:%d s:%d\n&quot;,i,s);</span><br>        i++;<br>    &#125;<br>    u=k-i*(i<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span>(u&gt;<span class="hljs-number">0</span>) s+=u*i;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,s);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P4414-COCI2006-2007-2-ABC"><a href="#P4414-COCI2006-2007-2-ABC" class="headerlink" title="P4414 [COCI2006-2007#2] ABC"></a>P4414 [COCI2006-2007#2] ABC</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4414">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a[<span class="hljs-number">3</span>];<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d %d&quot;</span>,&amp;a[<span class="hljs-number">0</span>],&amp;a[<span class="hljs-number">1</span>],&amp;a[<span class="hljs-number">2</span>]);<br>    <span class="hljs-type">char</span> b[<span class="hljs-number">3</span>];<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;\n%c%c%c&quot;</span>,&amp;b[<span class="hljs-number">0</span>],&amp;b[<span class="hljs-number">1</span>],&amp;b[<span class="hljs-number">2</span>]);<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">3</span>;k++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)&#123;<br>            <span class="hljs-keyword">if</span> (a[i]&gt;a[i+<span class="hljs-number">1</span>])&#123;<br>            <span class="hljs-type">int</span> x=a[i];<br>            a[i]=a[i+<span class="hljs-number">1</span>];<br>            a[i+<span class="hljs-number">1</span>]=x;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">3</span>;j++)&#123;<br>       <span class="hljs-keyword">if</span> (b[j]==<span class="hljs-string">&#x27;A&#x27;</span>)&#123;<br>           <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d &quot;</span>,a[<span class="hljs-number">0</span>]);<br>       &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(b[j]==<span class="hljs-string">&#x27;B&#x27;</span>) &#123;<br>           <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d &quot;</span>,a[<span class="hljs-number">1</span>]);<br>       &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(b[j]==<span class="hljs-string">&#x27;C&#x27;</span>)&#123;<br>            <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d &quot;</span>,a[<span class="hljs-number">2</span>]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5703-【深基2-例5】苹果采购"><a href="#P5703-【深基2-例5】苹果采购" class="headerlink" title="P5703 【深基2.例5】苹果采购"></a>P5703 【深基2.例5】苹果采购</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5703">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> a,b,s;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;a,&amp;b);<br>    s=a*b;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,s);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5704-【深基2-例6】字母转换"><a href="#P5704-【深基2-例6】字母转换" class="headerlink" title="P5704 【深基2.例6】字母转换"></a>P5704 【深基2.例6】字母转换</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5704">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">char</span> a,s;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%c&quot;</span>,&amp;a);<br>    s=<span class="hljs-string">&#x27;A&#x27;</span>-<span class="hljs-string">&#x27;a&#x27;</span>+a;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%c&quot;</span>,s);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5705-【深基2-例7】数字反转"><a href="#P5705-【深基2-例7】数字反转" class="headerlink" title="P5705 【深基2.例7】数字反转"></a>P5705 【深基2.例7】数字反转</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5705">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a,b;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d.%d&quot;</span>,&amp;a,&amp;b);<br>    <span class="hljs-type">int</span> c=a/<span class="hljs-number">100</span>,d=a%<span class="hljs-number">100</span>/<span class="hljs-number">10</span>,e=a%<span class="hljs-number">100</span>%<span class="hljs-number">10</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d.%d&quot;</span>,b,e*<span class="hljs-number">100</span>+d*<span class="hljs-number">10</span>+c);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5708-【深基2-习2】三角形面积"><a href="#P5708-【深基2-习2】三角形面积" class="headerlink" title="P5708 【深基2.习2】三角形面积"></a>P5708 【深基2.习2】三角形面积</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5708">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;math.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">double</span> a,b,c;<br>    <span class="hljs-type">double</span> s;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf %lf %lf&quot;</span>,&amp;a,&amp;b,&amp;c);<br>    <span class="hljs-type">double</span> p=(a+b+c)/<span class="hljs-number">2</span>;<br>    s= <span class="hljs-built_in">sqrt</span>(p*(p-a)*(p-b)*(p-c));<br><span class="hljs-comment">//    s=(int)(s*10+0.5)/10.0;</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.1lf&quot;</span>,s);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5709-【深基2-习6】Apples-Prologue-x2F-苹果和虫子"><a href="#P5709-【深基2-习6】Apples-Prologue-x2F-苹果和虫子" class="headerlink" title="P5709 【深基2.习6】Apples Prologue &#x2F; 苹果和虫子"></a>P5709 【深基2.习6】Apples Prologue &#x2F; 苹果和虫子</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5709">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> m,t,s;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d %d&quot;</span>,&amp;m,&amp;t,&amp;s);<br>    <span class="hljs-keyword">if</span>(m*t&gt;s)<br>        <span class="hljs-keyword">if</span> (s%t==<span class="hljs-number">0</span>)<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,m-s/t);<br>        <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,m-s/t<span class="hljs-number">-1</span>);<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5710-【深基3-例2】数的性质"><a href="#P5710-【深基3-例2】数的性质" class="headerlink" title="P5710 【深基3.例2】数的性质"></a>P5710 【深基3.例2】数的性质</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5710">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span>  <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span>  x;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;x);<br>    <span class="hljs-keyword">if</span> (x%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>&amp;&amp;(x&gt;<span class="hljs-number">4</span>&amp;&amp;x&lt;=<span class="hljs-number">12</span>))<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1&quot;</span>);<br>    <span class="hljs-keyword">else</span>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);<br>    <br>    <span class="hljs-keyword">if</span> (x%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>||(x&gt;<span class="hljs-number">4</span>&amp;&amp;x&lt;=<span class="hljs-number">12</span>))<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1&quot;</span>);<br>    <span class="hljs-keyword">else</span>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);<br>    <br>    <span class="hljs-keyword">if</span> ((x%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>&amp;&amp;!(x&gt;<span class="hljs-number">4</span>&amp;&amp;x&lt;=<span class="hljs-number">12</span>))||(x%<span class="hljs-number">2</span>!=<span class="hljs-number">0</span>&amp;&amp;(x&gt;<span class="hljs-number">4</span>&amp;&amp;x&lt;=<span class="hljs-number">12</span>)))<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1&quot;</span>);<br>    <span class="hljs-keyword">else</span>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);<br>    <br>    <span class="hljs-keyword">if</span>(x%<span class="hljs-number">2</span>!=<span class="hljs-number">0</span>&amp;&amp;!(x&gt;<span class="hljs-number">4</span>&amp;&amp;x&lt;=<span class="hljs-number">12</span>))<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1&quot;</span>);<br>    <span class="hljs-keyword">else</span>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0&quot;</span>);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5711-【深基3-例3】闰年判断"><a href="#P5711-【深基3-例3】闰年判断" class="headerlink" title="P5711 【深基3.例3】闰年判断"></a>P5711 【深基3.例3】闰年判断</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5711">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>    <span class="hljs-keyword">if</span> (a%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>||(a%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;a%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>))<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1&quot;</span>);<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0&quot;</span>);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5712-【深基3-例4】Apples"><a href="#P5712-【深基3-例4】Apples" class="headerlink" title="P5712 【深基3.例4】Apples"></a>P5712 【深基3.例4】Apples</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5712">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> x;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;x);<br>    <span class="hljs-keyword">if</span> (x==<span class="hljs-number">1</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Today, I ate 1 apple.&quot;</span>);<br>    <span class="hljs-keyword">if</span> (x==<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Today, I ate 0 apple.&quot;</span>);<br>    <span class="hljs-keyword">if</span> (x&gt;<span class="hljs-number">1</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Today, I ate %d apples.&quot;</span>,x);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5713-【深基3-例5】洛谷团队系统"><a href="#P5713-【深基3-例5】洛谷团队系统" class="headerlink" title="P5713 【深基3.例5】洛谷团队系统"></a>P5713 【深基3.例5】洛谷团队系统</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5713">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n,st,lt;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    st=<span class="hljs-number">5</span>*n,lt=<span class="hljs-number">10</span>+<span class="hljs-number">3</span>*n;<br>    <span class="hljs-keyword">if</span>(st&lt;lt)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Local&quot;</span>);<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Luogu&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5715-【深基3-例8】三位数排序"><a href="#P5715-【深基3-例8】三位数排序" class="headerlink" title="P5715 【深基3.例8】三位数排序"></a>P5715 【深基3.例8】三位数排序</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5715">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a,b,c;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d %d&quot;</span>,&amp;a,&amp;b,&amp;c);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">3</span>;++k)&#123;<br>        <span class="hljs-keyword">if</span> (a&gt;b) &#123;<br>            <span class="hljs-type">int</span> x=a;<br>            a=b,b=x;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (b&gt;c)&#123;<br>            <span class="hljs-type">int</span> x=c;<br>            c=b,b=x;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d %d %d&quot;</span>,a,b,c);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5716-【深基3-例9】月份天数"><a href="#P5716-【深基3-例9】月份天数" class="headerlink" title="P5716 【深基3.例9】月份天数"></a>P5716 【深基3.例9】月份天数</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5716">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> y,m;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;y,&amp;m);<br>    <span class="hljs-keyword">if</span> (m==<span class="hljs-number">2</span>)&#123;<br>        <span class="hljs-keyword">if</span>((y%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;y%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||y%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>)<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;29&quot;</span>);<br>        <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;28&quot;</span>);<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(m==<span class="hljs-number">1</span>||m==<span class="hljs-number">3</span>||m==<span class="hljs-number">5</span>||m==<span class="hljs-number">7</span>||m==<span class="hljs-number">8</span>||m==<span class="hljs-number">10</span>||m==<span class="hljs-number">12</span>)<br>            <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;31&quot;</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;30&quot;</span>);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5718-【深基4-例2】找最小值"><a href="#P5718-【深基4-例2】找最小值" class="headerlink" title="P5718 【深基4.例2】找最小值"></a>P5718 【深基4.例2】找最小值</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5718">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">( )</span>&#123;<br>    <span class="hljs-type">int</span> n,a,c=<span class="hljs-number">0x3f3f3f3f</span>;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)&#123;<br>        <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>        <span class="hljs-keyword">if</span> (a&lt;c)&#123;<br>            c=a;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,c);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5719-【深基4-例3】分类平均"><a href="#P5719-【深基4-例3】分类平均" class="headerlink" title="P5719 【深基4.例3】分类平均"></a>P5719 【深基4.例3】分类平均</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5719">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span>  <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n,k;<br>    <br>    <span class="hljs-type">double</span> c1=<span class="hljs-number">0</span>,c2=<span class="hljs-number">0</span>,s1=<span class="hljs-number">0</span>,s2=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;n,&amp;k);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>        <span class="hljs-keyword">if</span> (i%k==<span class="hljs-number">0</span>)&#123;<br>            c1++;<br>            s1+=i;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            c2++;<br>            s2+=i; <br>        &#125;<br>    &#125;<br>   <br>    <span class="hljs-built_in">printf</span>  (<span class="hljs-string">&quot;%.1f %.1f&quot;</span>,s1/c1,s2/c2);<br>    <span class="hljs-keyword">return</span>  <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5721-【深基4-例6】数字直角三角形"><a href="#P5721-【深基4-例6】数字直角三角形" class="headerlink" title="P5721 【深基4.例6】数字直角三角形"></a>P5721 【深基4.例6】数字直角三角形</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5721">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-type">int</span> c=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> l=<span class="hljs-number">1</span>;l&lt;=n;l++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=n-l;i++)&#123;<br>            <span class="hljs-keyword">if</span> (c&lt;<span class="hljs-number">10</span>) <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;0%d&quot;</span>,c);<br>            <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,c);<br>            c++;<br>        &#125;<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5722-【深基4-例11】数列求和"><a href="#P5722-【深基4-例11】数列求和" class="headerlink" title="P5722 【深基4.例11】数列求和"></a>P5722 【深基4.例11】数列求和</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5722">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n,s=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>        s+=i;<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,s);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5724-【深基4-习5】求极差-x2F-最大跨度值"><a href="#P5724-【深基4-习5】求极差-x2F-最大跨度值" class="headerlink" title="P5724 【深基4.习5】求极差 &#x2F; 最大跨度值"></a>P5724 【深基4.习5】求极差 &#x2F; 最大跨度值</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5724">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> inf=<span class="hljs-number">0x3f3f3f3f</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-type">int</span> a[n+<span class="hljs-number">1</span>],max=-inf,min=inf;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        <span class="hljs-keyword">if</span> (a[i]&lt;min) min=a[i];<br>        <span class="hljs-keyword">if</span> (a[i]&gt;max) max=a[i];<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,max-min);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5725-【深基4-习8】求三角形"><a href="#P5725-【深基4-习8】求三角形" class="headerlink" title="P5725 【深基4.习8】求三角形"></a>P5725 【深基4.习8】求三角形</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5725">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> n,c=<span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> l=<span class="hljs-number">1</span>;l&lt;=n;l++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>            <span class="hljs-keyword">if</span> (c&lt;<span class="hljs-number">10</span>) <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;0%d&quot;</span>,c);<br>            <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,c);<br>            c++;<br>        &#125;<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;\n&quot;</span>);<br>    c=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> l=<span class="hljs-number">1</span>;l&lt;=n;l++)&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n-l;i++)&#123;<br>            <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;  &quot;</span>);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;l;i++)&#123;<br>            <span class="hljs-keyword">if</span> (c&lt;<span class="hljs-number">10</span>) <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;0%d&quot;</span>,c);<br>            <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%d&quot;</span>,c);<br>            c++;<br>        &#125;<br>    <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;\n&quot;</span>);    <br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P1055-NOIP2008-普及组-ISBN-号码"><a href="#P1055-NOIP2008-普及组-ISBN-号码" class="headerlink" title="P1055 [NOIP2008 普及组] ISBN 号码"></a>P1055 [NOIP2008 普及组] ISBN 号码</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1055">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span> <span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">char</span> a[<span class="hljs-number">10</span>];<br>    <span class="hljs-type">char</span> z;<br><span class="hljs-comment">//    scanf (&quot;%d-&quot;,&amp;a[1]);</span><br><span class="hljs-comment">//    for (int i=2;i&lt;5;i++)&#123;</span><br><span class="hljs-comment">//        scanf (&quot;%d&quot;,&amp;a[i]);</span><br><span class="hljs-comment">//    &#125;</span><br><span class="hljs-comment">//    scanf (&quot;-&quot;);</span><br><span class="hljs-comment">//    for (int i=5;i&lt;10;i++)&#123;</span><br><span class="hljs-comment">//        scanf (&quot;%d&quot;,&amp;a[i]);</span><br><span class="hljs-comment">//    &#125;</span><br><span class="hljs-comment">//    scanf (&quot;-%c&quot;,&amp;z);</span><br>    <span class="hljs-built_in">scanf</span> (<span class="hljs-string">&quot;%c-%c%c%c-%c%c%c%c%c-%c&quot;</span>,&amp;a[<span class="hljs-number">1</span>],&amp;a[<span class="hljs-number">2</span>],&amp;a[<span class="hljs-number">3</span>],&amp;a[<span class="hljs-number">4</span>],&amp;a[<span class="hljs-number">5</span>],&amp;a[<span class="hljs-number">6</span>],&amp;a[<span class="hljs-number">7</span>],&amp;a[<span class="hljs-number">8</span>],&amp;a[<span class="hljs-number">9</span>],&amp;z);<br><br>    <span class="hljs-type">int</span> l,s=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">10</span>;i++)&#123;<br>        l=(a[i] - <span class="hljs-string">&#x27;0&#x27;</span>)*i;<br><span class="hljs-comment">//        printf(&quot;a[%d]:%c\n&quot;, i, a[i]);</span><br>        s+=l;<br>    &#125;<br><br><span class="hljs-comment">//    printf(&quot;s:%d\n&quot;, s);</span><br>    s %= <span class="hljs-number">11</span>;<br>    <span class="hljs-keyword">if</span> (s==<span class="hljs-number">10</span>&amp;&amp;z==<span class="hljs-string">&#x27;X&#x27;</span>)&#123;<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;Right&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s==(z-<span class="hljs-string">&#x27;0&#x27;</span>))&#123;<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;Right&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s==<span class="hljs-number">10</span>&amp;&amp;z!=<span class="hljs-string">&#x27;X&#x27;</span>)&#123;<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%c-%c%c%c-%c%c%c%c%c-X&quot;</span>,a[<span class="hljs-number">1</span>],a[<span class="hljs-number">2</span>],a[<span class="hljs-number">3</span>],a[<span class="hljs-number">4</span>],a[<span class="hljs-number">5</span>],a[<span class="hljs-number">6</span>],a[<span class="hljs-number">7</span>],a[<span class="hljs-number">8</span>],a[<span class="hljs-number">9</span>]);<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s!=<span class="hljs-number">10</span>&amp;&amp;s!=(z-<span class="hljs-string">&#x27;0&#x27;</span>))&#123;<br>        <span class="hljs-built_in">printf</span> (<span class="hljs-string">&quot;%c-%c%c%c-%c%c%c%c%c-%d&quot;</span>,a[<span class="hljs-number">1</span>],a[<span class="hljs-number">2</span>],a[<span class="hljs-number">3</span>],a[<span class="hljs-number">4</span>],a[<span class="hljs-number">5</span>],a[<span class="hljs-number">6</span>],a[<span class="hljs-number">7</span>],a[<span class="hljs-number">8</span>],a[<span class="hljs-number">9</span>],s);<br><span class="hljs-comment">//        printf(&quot;\n%d&quot;,s);</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="P5707-【深基2-例12】上学迟到"><a href="#P5707-【深基2-例12】上学迟到" class="headerlink" title="P5707 【深基2.例12】上学迟到"></a>P5707 【深基2.例12】上学迟到</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5707">原题链接</a></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> s,v,h=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>,&amp;s,&amp;v);<br>    <span class="hljs-type">int</span> t=s/v+<span class="hljs-number">10</span>;<br>    <span class="hljs-type">int</span> a,b;<br>    <span class="hljs-keyword">if</span> (s%v!=<span class="hljs-number">0</span>)&#123;t++;&#125;<br>    <span class="hljs-keyword">if</span> (t&lt;=<span class="hljs-number">480</span>)<br>       h=<span class="hljs-number">480</span>-t;<br>    <span class="hljs-keyword">else</span><br>        h=<span class="hljs-number">60</span>*<span class="hljs-number">24</span>-(t<span class="hljs-number">-480</span>);<br>    a=h/<span class="hljs-number">60</span>,b=h%<span class="hljs-number">60</span>;<br>    <br>    <span class="hljs-keyword">if</span>(a&lt;<span class="hljs-number">10</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0%d:&quot;</span>,a);<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d:&quot;</span>,a);<br>    <span class="hljs-keyword">if</span>(b&lt;<span class="hljs-number">10</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;0%d&quot;</span>,b);<br>    <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,b);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BC%96%E7%A8%8B/">#编程</a>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>刷题也是一种成就感（Hi～洛谷）</div>
+      <div>https://liaoweiquan.github.io/2019/06/30/洛谷刷题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>泉泉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2019年6月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/08/15/LeetCode/" title="LeetCode入门">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">LeetCode入门</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/03/10/C%E8%AF%AD%E8%A8%80%E5%88%9D%E8%A7%81/" title="C语言入门～又爱又恨">
+                        <span class="hidden-mobile">C语言入门～又爱又恨</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://damaohappy.zeabur.app","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+              Fluid.plugins.imageCaption(imgSelector);
+              Fluid.plugins.fancyBox(imgSelector);
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
