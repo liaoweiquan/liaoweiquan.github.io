@@ -1,0 +1,1178 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <link rel="icon" href="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVWp5Q2lvYVRMdnZ2VGZrP2U9bWEzN3V3.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="泉泉">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、项目背景本项目以淘宝的真实用户的商品行为数据为基础，通过sql分析和tableau可视化，探索用户行为规律，寻找高价值用户；分析商品特征，寻找高贡献商品；分析产品功能，优化产品路径。 注：数据包含了抽样出来的1W用户在一个月时间（11.18~12.18）之内的移动端行为约一千两百万条数据。 二、分析流程  主要从以下四个维度对用户行为进行分析和建议: 用户行为间的转化情况分析利用漏斗模型分析用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="淘宝用户行为分析">
+<meta property="og:url" content="https://liaoweiquan.github.io/2023/04/11/%E6%B7%98%E5%AE%9D%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Quan&#39;sRecord">
+<meta property="og:description" content="一、项目背景本项目以淘宝的真实用户的商品行为数据为基础，通过sql分析和tableau可视化，探索用户行为规律，寻找高价值用户；分析商品特征，寻找高贡献商品；分析产品功能，优化产品路径。 注：数据包含了抽样出来的1W用户在一个月时间（11.18~12.18）之内的移动端行为约一千两百万条数据。 二、分析流程  主要从以下四个维度对用户行为进行分析和建议: 用户行为间的转化情况分析利用漏斗模型分析用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGxkVF9iU3dOcE5vTzVPP2U9YW9zRUt2.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGdQZnc4TDNQZlhZNERWP2U9ZnVsQUg0.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraVFMcUpRZW9KRVVPd2YwP2U9YU01dGxy.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraHAxUmVfcEtVTF9qMjd5P2U9cDVUbTVq.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraFBmUFg5MGdyOG5UaTRQP2U9dWNmUThM.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrak5CNDRBTUpqZFZGWXhqP2U9NkVYNThS.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraUJNeFR5VmJDUFM4a2tBP2U9b1lCZFBM.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraUVENDVaQmZKSDJXakQ5P2U9dlk5a3pZ.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraF9ZWkJzcEVYM3h6RGZqP2U9cEI2M1oy.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhralZXRi05c01acDF1WjJSP2U9V3puMlY2.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGNrcHZHMHJsVTdyNWNWP2U9dkEyT0RC.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhral9wOE5vVWNZcDNmazRUP2U9a1lZOWQw.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraXBpSHhTSmk5ZlNwOEZuP2U9TWpja0JS.png">
+<meta property="og:image" content="https://liaoweiquan.github.io/">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraFZ5SVh2U0tPYzQ2RGtxP2U9ZkhnQ2x2.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrakJlSjllb3BLZ0tPNFk3P2U9YWlFcXRm.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraS1LVVJwSWMta21OelRJP2U9SlpjNzRx.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhramd3dm9aWWRLaDlRNTJKP2U9ajVKYmdX.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraDI0cG5tTy1MTDZhaDhVP2U9MFJpSVl4.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraXNfVTNzdUdqSjhhRm9xP2U9VXhiM3Rp.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraHUxNk5PbHhuMWNyZGllP2U9YTBDV1Zs.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraWUzSHpfbjJKOW91QlEwP2U9YTZudVp2.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrajdsLWRTa3ZGQWRYcmpUP2U9dWVFU05F.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrajJ5MjJ0ek9QT3pHaVU3P2U9bVJIRWlU.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhra0E2TmgwMmo2VUhZUGlEP2U9TFU2RXZm.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraW1LMHhRSEkwS2Rwa0tzP2U9ZVRraDZn.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhramRGaFczTWlKWU82V3RnP2U9c3VGTzA0.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhralQ1bW4zYUcwSGp1cEVMP2U9R3QzUkZK.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGJGbHZtWWRtbTVBVFRPP2U9TUJrdUR3.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraWdlbG9uTFJwOEJveEVpP2U9UDhUOGdy.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhranVWVjk2OVUxazRvS3VaP2U9a3JUeTVI.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhra0Y0SWE3S1FSeDhOSTFQP2U9UkJHTDJk.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhram5TblZ4MGJpNFVvVEptP2U9ek1kSlpN.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhralpqcVl4NG51OXFYajV1P2U9YkxOc29W.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraHh1STVrRTl4SEsyelIzP2U9WDV1R2Q3.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraTdsSnp3TC10NXZlMmVzP2U9alRxTVVV.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraVdIUW9zWnJ4RXhrazAtP2U9dmJuVVFL.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraU5fT19ob0RpOWJjRzBtP2U9M2RXWFhv.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraXgyQTYydXVYa01vZEp2P2U9a1YwSHJI.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrakk3TVZTMTlrNm5MdkY2P2U9YXlCMGFi.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraFFLWEJHMldDajh6OUZZP2U9VWVud0VX.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrakVHTXRYdHUzN3p2ekl4P2U9djBPa05h.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhram9nTml0dWswUGt6N0tPP2U9Z0hpSWhj.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraTF3cDVQcURmZk1xckI0P2U9OGhCTjdR.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraDZhdDdjQURQUzRRbzB0P2U9bnJRcEVM.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhranlnYVR2QmRMMlo4UE9lP2U9NzRXRVJF.png">
+<meta property="og:image" content="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraVlHb0FlV0M2S0VjWWhZP2U9NndjSlFt.png">
+<meta property="article:published_time" content="2023-04-11T15:56:11.648Z">
+<meta property="article:modified_time" content="2023-04-11T16:05:08.359Z">
+<meta property="article:author" content="泉泉">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="Tableau">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://liaoweiquan.github.io/">
+  
+  
+  
+  <title>淘宝用户行为分析 - Quan&#39;sRecord</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liaoweiquan.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":40,"cursorChar":"","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Quan&#39;s Record.</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBaE8wcUlFYWhLejhrVVpDZ3dJV2g2V2wwVTJDP2U9emp0bHdG.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.1)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="淘宝用户行为分析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-11 23:56" pubdate>
+          2023年4月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          97 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">淘宝用户行为分析</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一、项目背景"><a href="#一、项目背景" class="headerlink" title="一、项目背景"></a>一、项目背景</h1><p>本项目以淘宝的真实用户的商品行为数据为基础，通过sql分析和tableau可视化，探索用户行为规律，寻找高价值用户；分析商品特征，寻找高贡献商品；分析产品功能，优化产品路径。</p>
+<p>注：数据包含了抽样出来的1W用户在一个月时间（11.18~12.18）之内的移动端行为约一千两百万条数据。</p>
+<h1 id="二、分析流程"><a href="#二、分析流程" class="headerlink" title="二、分析流程"></a>二、分析流程</h1><p><img src="/" srcset="/img/loading.gif" lazyload alt="分析流程"></p>
+<ul>
+<li>主要从以下四个维度对用户行为进行分析和建议:</li>
+<li>用户行为间的<strong>转化情况</strong>分析<br>利用漏斗模型分析用户从商品浏览到购买整个过程中，常见的电商分析指标，确定各个环节流失率， 提出改善转化率的建议。</li>
+<li>用户的<strong>行为习惯</strong>分析<br>利用pv、uv等指标，找出用户活跃的日期以及每天的活跃时间段。</li>
+<li>用户<strong>类目偏好</strong>分析<br>根据商品的点击、收藏、加购、购买频率，探索用户对商品的购买偏好，找到针对不同商品的营销策略(购买 率较高的类目和产品，优化产品推荐)。</li>
+<li>用户<strong>价值分析</strong><br>找出最具有价值的核心用户群，针对这个群体推送个性化推送，优惠券或者活动。</li>
+<li>待续</li>
+</ul>
+<h2 id="确认问题"><a href="#确认问题" class="headerlink" title="确认问题"></a>确认问题</h2><p>本次分析的目的是想通过对用户行为数据进行分析，为以下问题提供解释和改进建议:</p>
+<ul>
+<li>基于漏斗模型的用户购买流程各环节的分析指标，分析各环节的转化率，便于找到改进的环节。</li>
+<li>商品分析：找出热销商品，研究热销商品的特点。</li>
+<li>基于RFM模型找出核心付费用户群，对每部分群体做精准营销。</li>
+</ul>
+<h1 id="三、数据读取"><a href="#三、数据读取" class="headerlink" title="三、数据读取"></a>三、数据读取</h1><ul>
+<li><p>表结构</p>
+<p>  <img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGxkVF9iU3dOcE5vTzVPP2U9YW9zRUt2.png" srcset="/img/loading.gif" lazyload alt="表结构说明"></p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql">use user_tb;<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> user_action<br>(<br>user_id <span class="hljs-type">int</span> (<span class="hljs-number">9</span>),<br>item_id <span class="hljs-type">int</span> (<span class="hljs-number">9</span>),<br>behavior_type <span class="hljs-type">int</span> (<span class="hljs-number">1</span>),<br>item_category <span class="hljs-type">int</span> (<span class="hljs-number">5</span>),<br><span class="hljs-type">time</span>  <span class="hljs-type">varchar</span> (<span class="hljs-number">13</span>)<br>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>数据导入</p>
+<p>数据来源：<a target="_blank" rel="noopener" href="https://tianchi.aliyun.com/competition/entrance/532059/information">阿里云-天池-淘宝用户购物行为数据可视化分析</a></p>
+</li>
+</ul>
+<h1 id="四、数据预处理"><a href="#四、数据预处理" class="headerlink" title="四、数据预处理"></a>四、数据预处理</h1><p>数据预处理包括<strong>数据重复值</strong>、<strong>空缺值</strong>、<strong>异常值处理</strong>以及<strong>保持数据一致性</strong>。</p>
+<h2 id="数据重复值"><a href="#数据重复值" class="headerlink" title="数据重复值"></a>数据重复值</h2><ul>
+<li>查看数据重复值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span>,<span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <br><span class="hljs-keyword">from</span> user_action<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id,item_id,behavior_type,item_category,<span class="hljs-type">time</span><br><span class="hljs-keyword">having</span> <span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>)<span class="hljs-operator">&gt;</span><span class="hljs-number">1</span><br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">desc</span>;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGdQZnc4TDNQZlhZNERWP2U9ZnVsQUg0.png" srcset="/img/loading.gif" lazyload alt="数据重复值"></p>
+<ul>
+<li><p>处理数据重复值</p>
+<p>虽然可以看到有大量的重复数据。</p>
+<p>但是通过实际分析，time的精确到小时，而一个小时内可以发生多个用户购买行为，所以忽略掉这些重复的数据。</p>
+</li>
+</ul>
+<h2 id="数据空缺值"><a href="#数据空缺值" class="headerlink" title="数据空缺值"></a>数据空缺值</h2><ul>
+<li><p>查看数据空缺值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(user_id),<span class="hljs-built_in">count</span>(item_id),<span class="hljs-built_in">count</span>(behavior_type),<span class="hljs-built_in">count</span>(item_category),<span class="hljs-built_in">count</span>(<span class="hljs-type">time</span>)<br><span class="hljs-keyword">from</span> user_action;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraVFMcUpRZW9KRVVPd2YwP2U9YU01dGxy.png" srcset="/img/loading.gif" lazyload alt="数据空缺数值"></p>
+</li>
+</ul>
+<h2 id="数据异常值"><a href="#数据异常值" class="headerlink" title="数据异常值"></a>数据异常值</h2><p>从范围数值内入手或者是明显不符合实际逻辑的数据。</p>
+<ul>
+<li><p>查看behavio type的类型</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> behavior_type <span class="hljs-keyword">from</span> user_action;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraHAxUmVfcEtVTF9qMjd5P2U9cDVUbTVq.png" srcset="/img/loading.gif" lazyload alt="行为类型"></p>
+<p>四种行为，没有异常。</p>
+</li>
+<li><p>查看time的范围</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">max</span>(<span class="hljs-type">time</span>),<span class="hljs-built_in">min</span>(<span class="hljs-type">time</span>) <span class="hljs-keyword">from</span> user_action;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraFBmUFg5MGdyOG5UaTRQP2U9dWNmUThM.png" srcset="/img/loading.gif" lazyload alt="时间范围"></p>
+<p>没有问题，符合数据集中的描述，时间是从2014年11月18号到2014年12月18号共一个月的时间。</p>
+</li>
+</ul>
+<h2 id="数据一致性"><a href="#数据一致性" class="headerlink" title="数据一致性"></a>数据一致性</h2><ul>
+<li>对time字段做处理：<ul>
+<li>新建日期列，命名为date；新建小时列，命名为hour。</li>
+<li>更新新增列内容后删去原time列。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> user_action <span class="hljs-keyword">add</span> <span class="hljs-type">date</span> <span class="hljs-type">date</span>;<br><span class="hljs-keyword">update</span> user_action <span class="hljs-keyword">set</span> <span class="hljs-type">date</span><span class="hljs-operator">=</span><span class="hljs-keyword">left</span>(<span class="hljs-type">time</span>,<span class="hljs-number">10</span>);<br><br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> user_action <span class="hljs-keyword">add</span> <span class="hljs-keyword">hour</span> <span class="hljs-type">char</span>(<span class="hljs-number">255</span>);<br><span class="hljs-keyword">update</span> user_action <span class="hljs-keyword">set</span> <span class="hljs-keyword">hour</span><span class="hljs-operator">=</span><span class="hljs-keyword">right</span>(<span class="hljs-type">time</span>,<span class="hljs-number">8</span>);<br><br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> user_action <span class="hljs-keyword">drop</span> <span class="hljs-type">time</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>对behavior_type字段改为英文命名</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> user_action<br><span class="hljs-keyword">set</span> behavior_type<span class="hljs-operator">=</span>(<br>	<span class="hljs-keyword">case</span><br>	<span class="hljs-keyword">when</span> behavior_type<span class="hljs-operator">=</span><span class="hljs-number">1</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;look&#x27;</span><br>	<span class="hljs-keyword">when</span> behavior_type<span class="hljs-operator">=</span><span class="hljs-number">2</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;collect&#x27;</span><br>	<span class="hljs-keyword">when</span> behavior_type<span class="hljs-operator">=</span><span class="hljs-number">3</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;cart&#x27;</span><br>	<span class="hljs-keyword">when</span> behavior_type<span class="hljs-operator">=</span><span class="hljs-number">4</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;buy&#x27;</span><br>	<span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;other&#x27;</span> <span class="hljs-keyword">end</span><br>	);<br></code></pre></td></tr></table></figure>
+
+<h1 id="五、数据分析"><a href="#五、数据分析" class="headerlink" title="五、数据分析"></a>五、数据分析</h1><h2 id="（一）整体情况概述"><a href="#（一）整体情况概述" class="headerlink" title="（一）整体情况概述"></a>（一）整体情况概述</h2><h3 id="1-月维度-总体情况"><a href="#1-月维度-总体情况" class="headerlink" title="1.月维度-总体情况"></a>1.月维度-总体情况</h3><ul>
+<li>11月18日至12月18日总体uv、浏览总次数、人均浏览次数、收藏量、加购量、成交数</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 整体</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> month_all_cnt <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 创建月维度-指标视图</span><br><span class="hljs-keyword">select</span> <br>	<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">as</span> uv,<span class="hljs-comment">-- 独立访客数</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>)<span class="hljs-operator">/</span><span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">as</span> per_view, <span class="hljs-comment">-- 人均页面访问数</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_look,<span class="hljs-comment">-- 浏览量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;collect&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_collect,<span class="hljs-comment">-- 收藏量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;cart&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_cart,<span class="hljs-comment">-- 加购量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;buy&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_buy<span class="hljs-comment">-- 成交量</span><br><span class="hljs-keyword">from</span> user_action;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrak5CNDRBTUpqZFZGWXhqP2U9NkVYNThS.png" srcset="/img/loading.gif" lazyload alt="month_all_cnt"></p>
+<ul>
+<li>可以看出分析的总用户数为1万人，一个月的订单量约为12万单，并且比起收藏，人们更倾向于加购。</li>
+</ul>
+<h3 id="2-DNU指标"><a href="#2-DNU指标" class="headerlink" title="2.DNU指标"></a>2.DNU指标</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> day_dnu <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 创建每日新用户数视图</span><br><span class="hljs-keyword">select</span> <span class="hljs-type">date</span>,<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id)<br><span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> user_id,<span class="hljs-type">date</span>,<span class="hljs-built_in">rank</span>() <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> user_id <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>) r<br>			<span class="hljs-keyword">from</span> user_action)t <br><span class="hljs-keyword">where</span> r<span class="hljs-operator">=</span><span class="hljs-number">1</span><br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p>​		<img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraUJNeFR5VmJDUFM4a2tBP2U9b1lCZFBM.png" srcset="/img/loading.gif" lazyload alt="DNU指标"></p>
+<ul>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraUVENDVaQmZKSDJXakQ5P2U9dlk5a3pZ.png" srcset="/img/loading.gif" lazyload alt="图-DNU指标"></p>
+</li>
+<li><p>可以看出DNU指标从首日便开始骤减，是由于数据是从11月18日开始，没有之前的数据源。故导致在11月18日中的“新增用户”极大部分是来自于此前活跃用户，并非当日新增的用户。</p>
+</li>
+<li><p>而次日到三日的DNU数据也出现一定程度的骤减情况，原因为这些“新增用户”也有部分来自于此前活跃用户。</p>
+</li>
+<li><p><strong>越到后面越呈现稳定状态，也更能代表DNU真实情况。</strong></p>
+</li>
+</ul>
+<h3 id="3-整体行为数据"><a href="#3-整体行为数据" class="headerlink" title="3.整体行为数据"></a>3.整体行为数据</h3><h4 id="（1）用户行为数据频次统计"><a href="#（1）用户行为数据频次统计" class="headerlink" title="（1）用户行为数据频次统计"></a>（1）用户行为数据频次统计</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">with</span> <span class="hljs-keyword">view</span> user_cnt_all <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 用户维度整体情况</span><br><span class="hljs-keyword">select</span> 	user_id,<br>	<span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> all_cnt,<span class="hljs-comment">-- 用户总点击量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_look,<span class="hljs-comment">-- 用户浏览量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;collect&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_collect,<span class="hljs-comment">-- 用户收藏量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;cart&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_cart,<span class="hljs-comment">-- 用户加购量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;buy&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_buy<span class="hljs-comment">-- 用户成交数</span><br><span class="hljs-keyword">from</span> user_action<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> cnt_all_buy;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraF9ZWkJzcEVYM3h6RGZqP2U9cEI2M1oy.png" srcset="/img/loading.gif" lazyload alt="user_cnt_all"></p>
+<ul>
+<li>统计出每个用户的总点击数、浏览数、收藏数、加购数和购买数，方便后续分析出用户的复购情况和浏览页面跳出情况。</li>
+</ul>
+<h4 id="（2）用户整体复购情况"><a href="#（2）用户整体复购情况" class="headerlink" title="（2）用户整体复购情况"></a>（2）用户整体复购情况</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">with</span> <span class="hljs-keyword">view</span> user_again <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 用户复购视图</span><br><span class="hljs-keyword">select</span> <span class="hljs-built_in">sum</span>(cnt_all_buy<span class="hljs-operator">&gt;</span><span class="hljs-number">0</span>) <span class="hljs-keyword">as</span> buy,<span class="hljs-comment">-- 用户月买了多少次</span><br>	<span class="hljs-built_in">sum</span>(cnt_all_bu<span class="hljs-operator">&gt;</span><span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> again_buy,<span class="hljs-comment">-- 用户月复购多少次</span><br>	concat(round((<span class="hljs-built_in">sum</span>(cnt_all_bu<span class="hljs-operator">&gt;</span><span class="hljs-number">1</span>)<span class="hljs-operator">/</span><span class="hljs-built_in">sum</span>(cnt_all_bu<span class="hljs-operator">&gt;</span><span class="hljs-number">0</span>))<span class="hljs-operator">*</span><span class="hljs-number">100</span>,<span class="hljs-number">2</span>),<span class="hljs-string">&#x27;%&#x27;</span>) <span class="hljs-keyword">as</span> again_buy_rate<span class="hljs-comment">-- 用户月复购率</span><br><span class="hljs-keyword">from</span> user_cnt_all<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhralZXRi05c01acDF1WjJSP2U9V3puMlY2.png" srcset="/img/loading.gif" lazyload alt="user_again"></p>
+<ul>
+<li>用户复购率高达91.69%，说明淘宝对用户有较大的吸引力使用户停留且用户 的忠诚度非常高。可以进一步提高复购率，鼓励用户更高频次的购物。</li>
+<li>猜测其最大的原因是双十二当天的购买人数非常多，拉高了复购率。后续还要和别的月份相比较。</li>
+</ul>
+<h4 id="（3）页面跳出情况"><a href="#（3）页面跳出情况" class="headerlink" title="（3）页面跳出情况"></a>（3）页面跳出情况</h4><h5 id="浏览页面跳出"><a href="#浏览页面跳出" class="headerlink" title="浏览页面跳出"></a>浏览页面跳出</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> user_lost <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 用户跳出情况</span><br><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">as</span> user_lost,<br>	concat(<br>		round(<br>			(<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id)<span class="hljs-operator">/</span>(<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(user_id) <span class="hljs-keyword">from</span> user_cnt_all))<span class="hljs-operator">*</span><span class="hljs-number">100</span><br>			,<span class="hljs-number">2</span>)<br>		,<span class="hljs-string">&#x27;%&#x27;</span>) <span class="hljs-keyword">as</span> user_lost_rate<br><span class="hljs-keyword">from</span> user_cnt_all<br><span class="hljs-keyword">where</span> cnt_all_look<span class="hljs-operator">&gt;</span><span class="hljs-number">0</span> <br>	<span class="hljs-keyword">and</span> cnt_all_collect<span class="hljs-operator">=</span><span class="hljs-number">0</span> <br>	<span class="hljs-keyword">and</span> cnt_all_cart<span class="hljs-operator">=</span><span class="hljs-number">0</span> <br>	<span class="hljs-keyword">and</span> cnt_all_cart<span class="hljs-operator">=</span><span class="hljs-number">0</span> <br>	<span class="hljs-keyword">and</span> cnt_all_buy<span class="hljs-operator">=</span><span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGNrcHZHMHJsVTdyNWNWP2U9dkEyT0RC.png" srcset="/img/loading.gif" lazyload alt="user_lost"></p>
+<h5 id="关键页面跳出"><a href="#关键页面跳出" class="headerlink" title="关键页面跳出"></a>关键页面跳出</h5><ul>
+<li>指的是用户加购或者收藏却没有购买的行为</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> user_keylost <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 用户关键跳出情况</span><br><span class="hljs-keyword">select</span> <br> (<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(user_id) <span class="hljs-keyword">from</span> user_cnt_all) <span class="hljs-keyword">as</span> <span class="hljs-string">&#x27;总用户&#x27;</span>,<br>	<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">as</span> <span class="hljs-string">&#x27;跳出用户&#x27;</span>,<br>	concat(<br>		round(<br>			(<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id)<span class="hljs-operator">/</span>(<span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(user_id) <span class="hljs-keyword">from</span> user_cnt_all))<span class="hljs-operator">*</span><span class="hljs-number">100</span><br>			,<span class="hljs-number">2</span>)<br>		,<span class="hljs-string">&#x27;%&#x27;</span>) <span class="hljs-keyword">as</span> 关键跳出率<br><span class="hljs-keyword">from</span> user_cnt_all<br><span class="hljs-keyword">where</span> cnt_all_collect<span class="hljs-operator">&gt;</span><span class="hljs-number">0</span> <span class="hljs-keyword">or</span> cnt_all_cart<span class="hljs-operator">&gt;</span><span class="hljs-number">0</span> <br>	<span class="hljs-keyword">and</span> cnt_all_buy<span class="hljs-operator">=</span><span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhral9wOE5vVWNZcDNmazRUP2U9a1lZOWQw.png" srcset="/img/loading.gif" lazyload alt="user_keylost"></p>
+<ul>
+<li><p>跳出情况解读：</p>
+<ul>
+<li><p>浏览页面跳出率为42.61%，关键页面跳出率我额70.29%。</p>
+</li>
+<li><p>分析：可能商品不符合用户需求，竞争力不够。</p>
+</li>
+<li><p>解决方法：可对比竞品网站，在商品的定价、商品陈列故事、商品详情描述等方面做出改进</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-用户留存情况"><a href="#4-用户留存情况" class="headerlink" title="4.用户留存情况"></a>4.用户留存情况</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> user_remain <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 创建用户留存表</span><br><span class="hljs-keyword">with</span> temp_remain <span class="hljs-keyword">as</span> (<br>	<span class="hljs-keyword">select</span> t1.date,<br>		<span class="hljs-built_in">sum</span>(datediff(t2.date,t1.date)<span class="hljs-operator">=</span><span class="hljs-number">0</span>) remain_0,<span class="hljs-comment">-- 当天用户数</span><br>		<span class="hljs-built_in">sum</span>(datediff(t2.date,t1.date)<span class="hljs-operator">=</span><span class="hljs-number">1</span>) remain_1,<span class="hljs-comment">-- 第二天剩下来的用户数</span><br>		<span class="hljs-built_in">sum</span>(datediff(t2.date,t1.date)<span class="hljs-operator">=</span><span class="hljs-number">2</span>) remain_2,<span class="hljs-comment">-- 第三天剩下来的用户数</span><br>		<span class="hljs-built_in">sum</span>(datediff(t2.date,t1.date)<span class="hljs-operator">=</span><span class="hljs-number">6</span>) remain_6<span class="hljs-comment">-- 第七天剩下来的用户数</span><br>	<span class="hljs-keyword">from</span> <br>	(<span class="hljs-keyword">select</span> user_id,<span class="hljs-type">date</span> <span class="hljs-keyword">from</span> user_action <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id,<span class="hljs-type">date</span>)t1<br>	<span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> (<span class="hljs-keyword">select</span> user_id,<span class="hljs-type">date</span> <span class="hljs-keyword">from</span> user_action <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id,<span class="hljs-type">date</span>)t2<br>	<span class="hljs-keyword">on</span> t1.user_id<span class="hljs-operator">=</span>t2.user_id <span class="hljs-keyword">and</span> t1.date<span class="hljs-operator">&lt;=</span>t2.date <br>	<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span><br>	<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span><br>)<br><span class="hljs-keyword">select</span> <span class="hljs-type">date</span>,remain_0 <span class="hljs-keyword">as</span> today_cnt,<br>	concat(round((remain_1<span class="hljs-operator">/</span>remain_0)<span class="hljs-operator">*</span><span class="hljs-number">100</span>,<span class="hljs-number">2</span>),<span class="hljs-string">&#x27;%&#x27;</span>) day_2_rate,<span class="hljs-comment">-- 第2天的留存率</span><br>	concat(round((remain_2<span class="hljs-operator">/</span>remain_0)<span class="hljs-operator">*</span><span class="hljs-number">100</span>,<span class="hljs-number">2</span>),<span class="hljs-string">&#x27;%&#x27;</span>) day_3_rate,<span class="hljs-comment">-- 第3天的留存率</span><br>	concat(round((remain_6<span class="hljs-operator">/</span>remain_0)<span class="hljs-operator">*</span><span class="hljs-number">100</span>,<span class="hljs-number">2</span>),<span class="hljs-string">&#x27;%&#x27;</span>) day_7_rate<span class="hljs-comment">-- 第7天的留存率</span><br><span class="hljs-keyword">from</span> temp_remain;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraXBpSHhTSmk5ZlNwOEZuP2U9TWpja0JS.png" srcset="/img/loading.gif" lazyload alt="user_remain"></p>
+</li>
+<li><p>因为时间跨度只有一个月，所以直接分析次日、三日、一周留存率。</p>
+<ul>
+<li>可以看出次日留存率、三日留存率、一周留存率在“双十二”前留存率呈下降趋势，而“双十二”活动左右的一周时间内各项指标都出现比较大的波动而且总体是提高的趋势，可以看出<strong>活动对用户的吸引力是很强的</strong>，在12.13号当天次日留存率达到顶峰值，可能为客户在购买完商品后对商品状态的关心而进行再次访问。</li>
+</ul>
+</li>
+</ul>
+<h2 id="（二）用户转化情况分析"><a href="#（二）用户转化情况分析" class="headerlink" title="（二）用户转化情况分析"></a>（二）用户转化情况分析</h2><h3 id="1-漏斗分析"><a href="#1-漏斗分析" class="headerlink" title="1.漏斗分析"></a>1.漏斗分析</h3><h4 id="（1）流量转化分析"><a href="#（1）流量转化分析" class="headerlink" title="（1）流量转化分析"></a>（1）流量转化分析</h4><ul>
+<li><p>对浏览量-收藏量-加购量-购买量的对比查询结果如下</p>
+<p><img src="/" srcset="/img/loading.gif" lazyload alt="转化情况">没有图</p>
+</li>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraFZ5SVh2U0tPYzQ2RGtxP2U9ZkhnQ2x2.png" srcset="/img/loading.gif" lazyload alt="11月转化情况"></p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrakJlSjllb3BLZ0tPNFk3P2U9YWlFcXRm.png" srcset="/img/loading.gif" lazyload alt="12月转化情况"></p>
+</li>
+<li><p>从浏览量-加购量-收藏量-购买量来看，只有1%的购买。并且无论是加购还是收藏的转化率都十分低，说明用户花费了大量时间来寻找合适产品，故我们可以从<strong>UI设计</strong>，<strong>关键词搜索优化</strong>，推荐算法等方面进行提升客户体验。</p>
+</li>
+<li><p>进一步用户是否也是在点击后产生了大量的流失</p>
+</li>
+</ul>
+<h4 id="（2）各环节用户转化分析"><a href="#（2）各环节用户转化分析" class="headerlink" title="（2）各环节用户转化分析"></a>（2）各环节用户转化分析</h4><ul>
+<li>基于user_cnt_all表对用户各个行为的统计，使用漏斗转化模型进行了处理，建立了用户转化漏斗图。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> user_transfor <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> <br>	<span class="hljs-built_in">sum</span>(cnt_all_look),<span class="hljs-built_in">sum</span>(cnt_all_collect),<span class="hljs-built_in">sum</span>(cnt_all_cart),<span class="hljs-built_in">sum</span>(cnt_all_buy)<br><span class="hljs-keyword">from</span> user_cnt_all;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraS1LVVJwSWMta21OelRJP2U9SlpjNzRx.png" srcset="/img/loading.gif" lazyload alt="user_transfor"></p>
+</li>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhramd3dm9aWWRLaDlRNTJKP2U9ajVKYmdX.png" srcset="/img/loading.gif" lazyload alt="用户转化漏斗图"></p>
+<ul>
+<li>可以看出，用户并未点击后就大量流失，并且最后付费用户比例达到了88.86%。说明用户的<strong>购买意愿较为理想</strong>。 结合用户行为数统计推断用户的点击行为远远超过了收藏和加购物车的行为，说明用户有较大的可能在购物时有“货比三家”的习惯。</li>
+<li>所以针对大部分点击后转化到加购物车和收藏的概率较低有较大的提升空间，APP可以通过<strong>优化推荐商品的功能和筛选商品的功能</strong>，让用户不用浏览较多的网页获得心仪的商品。</li>
+</ul>
+</li>
+</ul>
+<h4 id="（3）路径分析"><a href="#（3）路径分析" class="headerlink" title="（3）路径分析"></a>（3）路径分析</h4><ul>
+<li>那么再回到用户转化漏斗图，<strong>从浏览到购买每个环节的转化率又是多少</strong>?为什么收藏比加入购物车少?</li>
+<li>从用户点击后到最后购买的<strong>四条不同的路径</strong>展开分析</li>
+</ul>
+<h5 id="点击-购买"><a href="#点击-购买" class="headerlink" title="点击-购买"></a>点击-购买</h5><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraDI0cG5tTy1MTDZhaDhVP2U9MFJpSVl4.png" srcset="/img/loading.gif" lazyload alt="浏览-购买"></p>
+<h5 id="点击-收藏-购买"><a href="#点击-收藏-购买" class="headerlink" title="点击-收藏-购买"></a>点击-收藏-购买</h5><p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraXNfVTNzdUdqSjhhRm9xP2U9VXhiM3Rp.png" srcset="/img/loading.gif" lazyload alt="浏览-收藏-购买"></p>
+<h5 id="点击-加购-购买"><a href="#点击-加购-购买" class="headerlink" title="点击-加购-购买"></a>点击-加购-购买</h5><p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraHUxNk5PbHhuMWNyZGllP2U9YTBDV1Zs.png" srcset="/img/loading.gif" lazyload alt="浏览-加购-购买"></p>
+<h5 id="点击-收藏或加购-购买"><a href="#点击-收藏或加购-购买" class="headerlink" title="点击-收藏或加购-购买"></a>点击-收藏或加购-购买</h5><p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraWUzSHpfbjJKOW91QlEwP2U9YTZudVp2.png" srcset="/img/loading.gif" lazyload alt="浏览-收藏或加购-购买"></p>
+<ul>
+<li>从四种购买行为的留存，可以看出用户点击后，若存在后续行为则主要是加入购物车，其次是收藏和加购物车，再接下来是收藏；除此之外还与一部分用户是点击后直接购买的。</li>
+<li>可以着重研究一下各类路径用户购买的什么产品以及用户的标签，通过优化商品推荐和精准运营加强这部分的转化。</li>
+<li>推断在收藏的用户转换率较低的原因在于用户在点击时较为喜欢此商品或者说活动时间还未开始，通过提醒用户等方式精准运营提高这部分用户的购买率。</li>
+<li>最后，对用户从收藏到购买，加购物车到购买和收藏和加购物车到购买的转化分析来看，加购物车到购买的转化率最高达到了 34.79%，说明直接加入到购物车最后购买的概率较高，故引导客户加入购物车及时购买可以提高购买转化率。</li>
+</ul>
+<h3 id="2-行为习惯分析"><a href="#2-行为习惯分析" class="headerlink" title="2.行为习惯分析"></a>2.行为习惯分析</h3><h4 id="行为习惯分布（周）"><a href="#行为习惯分布（周）" class="headerlink" title="行为习惯分布（周）"></a>行为习惯分布（周）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> day_all_cnt <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 创建周的指标视图</span><br><span class="hljs-keyword">select</span> date_format(<span class="hljs-type">date</span>,<span class="hljs-string">&#x27;%W&#x27;</span>) <span class="hljs-keyword">as</span> weeks,<br>	<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">as</span> uv,<span class="hljs-comment">-- 独立访客数</span><br>	round(<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>)<span class="hljs-operator">/</span><span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id),<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> per_view, <span class="hljs-comment">-- 人均页面访问数</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_look,<span class="hljs-comment">-- 浏览量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;collect&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_collect,<span class="hljs-comment">-- 收藏量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;cart&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_cart,<span class="hljs-comment">-- 加购量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;buy&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_buy<span class="hljs-comment">-- 成交量</span><br><span class="hljs-keyword">from</span> user_action<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> weeks<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> field(weeks,<span class="hljs-string">&#x27;Monday&#x27;</span>,<span class="hljs-string">&#x27;Tuesday&#x27;</span>,<span class="hljs-string">&#x27;Wednesday&#x27;</span>,<span class="hljs-string">&#x27;Thurday&#x27;</span>,<span class="hljs-string">&#x27;Friday&#x27;</span>,<span class="hljs-string">&#x27;Saturday&#x27;</span>,<span class="hljs-string">&#x27;Sunday&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p>​		<img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrajdsLWRTa3ZGQWRYcmpUP2U9dWVFU05F.png" srcset="/img/loading.gif" lazyload alt="周维度数据"></p>
+<ul>
+<li><p>使用tableau将其可视化结果如下</p>
+<p>   <img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrajJ5MjJ0ek9QT3pHaVU3P2U9bVJIRWlU.png" srcset="/img/loading.gif" lazyload alt="周维度基础数据"></p>
+</li>
+<li><p>从星期来看，周四、周五、周六形成一个客流小高峰，在周五完成购买。</p>
+</li>
+</ul>
+<h4 id="行为习惯分布（天）"><a href="#行为习惯分布（天）" class="headerlink" title="行为习惯分布（天）"></a>行为习惯分布（天）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> day_all_cnt <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 创建每天指标视图</span><br><span class="hljs-keyword">select</span> <br>	<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">as</span> uv,<span class="hljs-comment">-- 每日独立访客数</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>)<span class="hljs-operator">/</span><span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">as</span> per_view, <span class="hljs-comment">-- 每日人均页面访问数</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_look,<span class="hljs-comment">-- 浏览量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;collect&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_collect,<span class="hljs-comment">-- 每日收藏量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;cart&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_cart,<span class="hljs-comment">-- 每日加购量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;buy&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_buy<span class="hljs-comment">-- 每日成交量</span><br><span class="hljs-keyword">from</span> user_action<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-type">date</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhra0E2TmgwMmo2VUhZUGlEP2U9TFU2RXZm.png" srcset="/img/loading.gif" lazyload alt="day_all_cnt"></p>
+<ul>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraW1LMHhRSEkwS2Rwa0tzP2U9ZVRraDZn.png" srcset="/img/loading.gif" lazyload alt="日维度基础数据+look"></p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhramRGaFczTWlKWU82V3RnP2U9c3VGTzA0.png" srcset="/img/loading.gif" lazyload alt="日维度基础数据"></p>
+<ul>
+<li>在研究日期范围内，用户活跃度均比较平稳，但是在12月2日和12月3日出现小幅度的增长，其中点击量和收藏，尤其是加购物车增幅增大，但是购买没有较大增幅。</li>
+<li>分析其原因是由于周末空余时间较多，用户流量增大;再加上双12很多预热活动，用户提前添加收藏和加购物车，是双12批量购买的前置动作，符合常规预期。</li>
+</ul>
+</li>
+</ul>
+<h4 id="一天内用户行为习惯分布"><a href="#一天内用户行为习惯分布" class="headerlink" title="一天内用户行为习惯分布"></a>一天内用户行为习惯分布</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> hours_all_cnt <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 创建每小时指标视图</span><br><span class="hljs-keyword">select</span> hours,<br>	<span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id) <span class="hljs-keyword">as</span> uv,<span class="hljs-comment">-- 每小时独立访客数</span><br>	round(<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>)<span class="hljs-operator">/</span><span class="hljs-built_in">count</span>(<span class="hljs-keyword">distinct</span> user_id),<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> per_view, <span class="hljs-comment">-- 每日人均页面访问数</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_look,<span class="hljs-comment">-- 浏览量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;collect&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_collect,<span class="hljs-comment">-- 每小时收藏量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;cart&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_cart,<span class="hljs-comment">-- 每小时加购量</span><br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;buy&#x27;</span>) <span class="hljs-keyword">as</span> cnt_all_buy<span class="hljs-comment">-- 每小时成交量</span><br><span class="hljs-keyword">from</span> user_action<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> hours;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhralQ1bW4zYUcwSGp1cEVMP2U9R3QzUkZK.png" srcset="/img/loading.gif" lazyload alt="hours_all_cnt"></p>
+</li>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGJGbHZtWWRtbTVBVFRPP2U9TUJrdUR3.png" srcset="/img/loading.gif" lazyload alt="时段维度基础数据-look"></p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraWdlbG9uTFJwOEJveEVpP2U9UDhUOGdy.png" srcset="/img/loading.gif" lazyload alt="时段维度基础数据"></p>
+<ul>
+<li>用户在10点到24点较为活跃。</li>
+<li>从17点开始逐渐增高，晚上21点—22点达到最高值。原因可能为18点后处于下班高峰期，人们喜欢下班后购物，在9点左右忙完琐事后购物。</li>
+</ul>
+</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="3-类目偏好分析"><a href="#3-类目偏好分析" class="headerlink" title="3.类目偏好分析"></a>3.类目偏好分析</h3><ul>
+<li>统计所有商品的购买次数，同时找到<strong>购买次数、浏览次数、收藏次数和加入购物车次数最多的商品</strong>。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> item_action_cnt <span class="hljs-keyword">as</span> <span class="hljs-comment">--创建商品各种动作数据视图</span><br><span class="hljs-keyword">select</span> item_id,<br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;look&#x27;</span>) item_look_cnt,<br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;collect&#x27;</span>) item_collect_cnt,<br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;cart&#x27;</span>) item_cart_cnt,<br>	<span class="hljs-built_in">sum</span>(behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;buy&#x27;</span>) item_buy_cnt<br><span class="hljs-keyword">from</span> user_action <br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> item_id<br></code></pre></td></tr></table></figure>
+
+<p>查询结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhranVWVjk2OVUxazRvS3VaP2U9a3JUeTVI.png" srcset="/img/loading.gif" lazyload alt="item_action_cnt"></p>
+<h4 id="商品销售情况分析"><a href="#商品销售情况分析" class="headerlink" title="商品销售情况分析"></a>商品销售情况分析</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 统计商品购买次数情况</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> item_buy <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> item_buy_cnt,<span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> item_cnt<br><span class="hljs-keyword">from</span> item_action_cnt <br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> item_buy_cnt<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> item_buy_cnt;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p> <img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhra0Y0SWE3S1FSeDhOSTFQP2U9UkJHTDJk.png" srcset="/img/loading.gif" lazyload alt="item_buy"></p>
+<ul>
+<li>用户购买的商品总共有4001种，购买次数在1次的商品占绝大部分，其次是购买次数为2商品，未出现购买次数集中的商 品，说明商品的售卖主要是依靠商品的长尾效应，而非爆款商品。</li>
+</ul>
+<h4 id="商品品类浏览的top20"><a href="#商品品类浏览的top20" class="headerlink" title="商品品类浏览的top20"></a>商品品类浏览的top20</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> look_20 <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> item_id,item_look_cnt<br><span class="hljs-keyword">from</span> item_action_cnt<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> item_look_cnt <span class="hljs-keyword">desc</span><br>limit <span class="hljs-number">20</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhram5TblZ4MGJpNFVvVEptP2U9ek1kSlpN.png" srcset="/img/loading.gif" lazyload alt="look_20"></p>
+</li>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhralpqcVl4NG51OXFYajV1P2U9YkxOc29W.png" srcset="/img/loading.gif" lazyload alt="tu-look_20"></p>
+</li>
+<li><p>可以看出商品112921337浏览次数最多，占所有浏览次数的9.5%。</p>
+</li>
+</ul>
+<h4 id="商品品类收藏的top20"><a href="#商品品类收藏的top20" class="headerlink" title="商品品类收藏的top20"></a>商品品类收藏的top20</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> collect_20 <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> item_id,item_collect_cnt<br><span class="hljs-keyword">from</span> item_action_cnt<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> item_collect_cnt <span class="hljs-keyword">desc</span><br>limit <span class="hljs-number">20</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraHh1STVrRTl4SEsyelIzP2U9WDV1R2Q3.png" srcset="/img/loading.gif" lazyload alt="collect_20"></p>
+</li>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraTdsSnp3TC10NXZlMmVzP2U9alRxTVVV.png" srcset="/img/loading.gif" lazyload alt="tu-collect_20"></p>
+</li>
+<li><p>可以看出商品277922302浏览次数最多，占所有浏览次数的7.6%。</p>
+</li>
+</ul>
+<h4 id="商品品类加购的top20"><a href="#商品品类加购的top20" class="headerlink" title="商品品类加购的top20"></a>商品品类加购的top20</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> cart_20 <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> item_id,item_cart_cnt<br><span class="hljs-keyword">from</span> item_action_cnt<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> item_cart_cnt <span class="hljs-keyword">desc</span> <br>limit <span class="hljs-number">20</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraVdIUW9zWnJ4RXhrazAtP2U9dmJuVVFL.png" srcset="/img/loading.gif" lazyload alt="cart_20"></p>
+</li>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraU5fT19ob0RpOWJjRzBtP2U9M2RXWFhv.png" srcset="/img/loading.gif" lazyload alt="tu-cart_20"></p>
+</li>
+<li><p>可以看出商品83098075浏览次数最多，占所有浏览次数的9.8%。</p>
+</li>
+</ul>
+<h4 id="商品品类购买的top20"><a href="#商品品类购买的top20" class="headerlink" title="商品品类购买的top20"></a>商品品类购买的top20</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">view</span> buy_20 <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> item_id,item_buy_cnt<br><span class="hljs-keyword">from</span> item_action_cnt<br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> item_buy_cnt <span class="hljs-keyword">desc</span> <br>limit <span class="hljs-number">20</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>查询结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraXgyQTYydXVYa01vZEp2P2U9a1YwSHJI.png" srcset="/img/loading.gif" lazyload alt="buy_20"></p>
+</li>
+<li><p>使用tableau将其可视化结果如下</p>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrakk3TVZTMTlrNm5MdkY2P2U9YXlCMGFi.png" srcset="/img/loading.gif" lazyload alt="tu-buy_20"></p>
+</li>
+<li><p>可以看出商品303205878浏览次数最多，占所有浏览次数的710.2%。</p>
+</li>
+</ul>
+<h4 id="商品品类分析"><a href="#商品品类分析" class="headerlink" title="商品品类分析"></a>商品品类分析</h4><ul>
+<li><p>查询商品在加购和收藏的top20，但不在购买类目的top20</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> cart_20.item_id<br><span class="hljs-keyword">from</span> cart_20<br><span class="hljs-keyword">where</span> item_id <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> item_id <span class="hljs-keyword">from</span> buy_20)<br><span class="hljs-keyword">and</span> item_id <span class="hljs-keyword">in</span> (<span class="hljs-keyword">select</span> item_id <span class="hljs-keyword">from</span> collect_20);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraFFLWEJHMldDajh6OUZZP2U9VWVud0VX.png" srcset="/img/loading.gif" lazyload alt="cart&amp;collect&amp;buy"></p>
+<ul>
+<li>发现没有商品查询商品在加购和收藏的top20，但不在购买类目的top20。说明所有top20的商品的转化率都还可以。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-价值分析—RFM模型"><a href="#4-价值分析—RFM模型" class="headerlink" title="4.价值分析—RFM模型"></a>4.价值分析—RFM模型</h3><h4 id="R部分"><a href="#R部分" class="headerlink" title="R部分"></a>R部分</h4><ul>
+<li>将客户近期购买时间进行等级划分，越接近2014-12-18号R越大。<ul>
+<li>间隔&gt;15天为1;<br> 间隔在10-15天为2;<br> 间隔在7-9天为3;<br> 间隔在3-6天为4;<br> 间隔在0-2天为5;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 第一步：先将每个用户最近购买时间提取出来</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> recency <span class="hljs-keyword">as</span> <span class="hljs-comment">-- 筛选出每个用户最近购买的日期</span><br><span class="hljs-keyword">select</span> user_id,<span class="hljs-built_in">max</span>(<span class="hljs-type">date</span>) <span class="hljs-keyword">as</span> recent_buy_time<br><span class="hljs-keyword">from</span> user_action <br><span class="hljs-keyword">where</span> behavior_type<span class="hljs-operator">=</span><span class="hljs-string">&#x27;buy&#x27;</span><br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> user_id;<br><br><span class="hljs-comment">-- 第二步：根据购买等级划分计算出得分</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> r_value <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span>,<br>	<span class="hljs-keyword">case</span> <br>		<span class="hljs-keyword">when</span> datediff(<span class="hljs-string">&#x27;2014-12-18&#x27;</span>,recent_buy_time)<span class="hljs-operator">&gt;</span><span class="hljs-number">15</span> <span class="hljs-keyword">then</span> <span class="hljs-number">1</span><br>		<span class="hljs-keyword">when</span> datediff(<span class="hljs-string">&#x27;2014-12-18&#x27;</span>,recent_buy_time) <span class="hljs-keyword">between</span> <span class="hljs-number">10</span> <span class="hljs-keyword">and</span> <span class="hljs-number">15</span> <span class="hljs-keyword">then</span> <span class="hljs-number">2</span><br>		<span class="hljs-keyword">when</span> datediff(<span class="hljs-string">&#x27;2014-12-18&#x27;</span>,recent_buy_time)<span class="hljs-keyword">between</span> <span class="hljs-number">7</span> <span class="hljs-keyword">and</span> <span class="hljs-number">9</span> <span class="hljs-keyword">then</span> <span class="hljs-number">3</span><br>		<span class="hljs-keyword">when</span> datediff(<span class="hljs-string">&#x27;2014-12-18&#x27;</span>,recent_buy_time)<span class="hljs-keyword">between</span> <span class="hljs-number">3</span> <span class="hljs-keyword">and</span> <span class="hljs-number">6</span> <span class="hljs-keyword">then</span> <span class="hljs-number">4</span><br>		<span class="hljs-keyword">when</span> datediff(<span class="hljs-string">&#x27;2014-12-18&#x27;</span>,recent_buy_time)<span class="hljs-keyword">between</span> <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-number">2</span> <span class="hljs-keyword">then</span> <span class="hljs-number">5</span> <br>	<span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> r <span class="hljs-comment">-- 计算出每个用户的r得分情况</span><br><span class="hljs-keyword">from</span> recency;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhrakVHTXRYdHUzN3p2ekl4P2U9djBPa05h.png" srcset="/img/loading.gif" lazyload alt="r_value"></p>
+<h4 id="F部分"><a href="#F部分" class="headerlink" title="F部分"></a>F部分</h4><ul>
+<li><p>将客户购买频次进行等级划分，越接近2014-12-18号R越大。</p>
+</li>
+<li><p>无购买，0分；<br>1-49次，1分；<br>50-99次，2分；<br>100-299次，3分；<br>300-499次，4分；<br>大于500次，5分。</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 表user_cnt_all已经计算出每个用户购买的次数 </span><br><span class="hljs-comment">-- 接下来根据购买频次等级计算出得分即可</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> f_value <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> user_id,cnt_all_buy,<br>	<span class="hljs-keyword">case</span> <br>		<span class="hljs-keyword">when</span> cnt_all_buy<span class="hljs-operator">&gt;</span><span class="hljs-number">500</span> <span class="hljs-keyword">then</span> <span class="hljs-number">5</span><br>		<span class="hljs-keyword">when</span> cnt_all_buy <span class="hljs-keyword">between</span> <span class="hljs-number">300</span> <span class="hljs-keyword">and</span> <span class="hljs-number">499</span> <span class="hljs-keyword">then</span> <span class="hljs-number">4</span><br>		<span class="hljs-keyword">when</span> cnt_all_buy <span class="hljs-keyword">between</span> <span class="hljs-number">100</span> <span class="hljs-keyword">and</span> <span class="hljs-number">299</span> <span class="hljs-keyword">then</span> <span class="hljs-number">3</span><br>		<span class="hljs-keyword">when</span> cnt_all_buy <span class="hljs-keyword">between</span> <span class="hljs-number">50</span> <span class="hljs-keyword">and</span> <span class="hljs-number">99</span> <span class="hljs-keyword">then</span> <span class="hljs-number">2</span><br>		<span class="hljs-keyword">when</span> cnt_all_buy <span class="hljs-keyword">between</span> <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> <span class="hljs-number">49</span> <span class="hljs-keyword">then</span> <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br>	<span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> f <span class="hljs-comment">-- 计算出每个用户的r得分情况</span><br><span class="hljs-keyword">from</span> user_cnt_all;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhram9nTml0dWswUGt6N0tPP2U9Z0hpSWhj.png" srcset="/img/loading.gif" lazyload alt="f_value"></p>
+<h4 id="用户划分"><a href="#用户划分" class="headerlink" title="用户划分"></a>用户划分</h4><ul>
+<li>由于只有R和F两个维度，所以分为以下四种，按照<strong>最近一次消费的均值</strong>和<strong>消费频率的均值</strong>定高低界限。<ul>
+<li><strong>重要高价值客户</strong>:指最近一次消费较近而且消费频率较高的客户;<br> <strong>重要唤回客户</strong>:指最近一次消费较远且消费频率较高的客户;<br> <strong>重要深耕客户</strong>:指最近一次消费较近且消费频率较低的客户;<br> <strong>重要挽留客户</strong>:指最近一次消费较远且消费频率较低的客户。</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>计算出r和f的均值</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">avg</span>(r) <span class="hljs-keyword">as</span> r_avg,<span class="hljs-built_in">avg</span>(f) <span class="hljs-keyword">as</span> f_avg<br><span class="hljs-keyword">from</span> r_value,f_value<br><span class="hljs-keyword">where</span> f<span class="hljs-operator">&lt;&gt;</span><span class="hljs-number">0</span>; <span class="hljs-comment">-- 因为在划分的时候没有购买过的用户f值给0分，故计算平均得分时去掉这类用户</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraTF3cDVQcURmZk1xckI0P2U9OGhCTjdR.png" srcset="/img/loading.gif" lazyload alt="avg"></p>
+<p>r_avg&#x3D;3.8522;f_avg&#x3D;1.0396</p>
+<ol start="2">
+<li><p>用户划分成四类</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> user_RF <span class="hljs-keyword">as</span> <br><span class="hljs-keyword">select</span> user_id,<br>	<span class="hljs-keyword">case</span> <br>		<span class="hljs-keyword">when</span> r<span class="hljs-operator">&gt;</span><span class="hljs-number">3.8522</span> <span class="hljs-keyword">and</span> f<span class="hljs-operator">&gt;</span><span class="hljs-number">1.0396</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;重要高价值客户&#x27;</span><br>		<span class="hljs-keyword">when</span> r<span class="hljs-operator">&lt;</span><span class="hljs-number">3.8522</span> <span class="hljs-keyword">and</span> f<span class="hljs-operator">&gt;</span><span class="hljs-number">1.0396</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;重要唤回客户&#x27;</span><br>		<span class="hljs-keyword">when</span> r<span class="hljs-operator">&gt;</span><span class="hljs-number">3.8522</span> <span class="hljs-keyword">and</span> f<span class="hljs-operator">&lt;</span><span class="hljs-number">1.0396</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;重要深耕客户&#x27;</span><br>		<span class="hljs-keyword">when</span> r<span class="hljs-operator">&lt;</span><span class="hljs-number">3.8522</span> <span class="hljs-keyword">and</span> f<span class="hljs-operator">&lt;</span><span class="hljs-number">1.0396</span> <span class="hljs-keyword">then</span> <span class="hljs-string">&#x27;重要挽留客户&#x27;</span> <br>	<span class="hljs-keyword">end</span> <span class="hljs-keyword">as</span> <span class="hljs-string">&#x27;客户类型&#x27;</span><br><span class="hljs-keyword">from</span> r_value<br><span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> f_value<br><span class="hljs-keyword">using</span>(user_id);<br><br></code></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraDZhdDdjQURQUzRRbzB0P2U9bnJRcEVM.png" srcset="/img/loading.gif" lazyload alt="user_RF"></p>
+<ol start="3">
+<li>对各种类型客户计数</li>
+</ol>
+<ul>
+<li>查询结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhranlnYVR2QmRMMlo4UE9lP2U9NzRXRVJF.png" srcset="/img/loading.gif" lazyload alt="客户类型计数"></p>
+<ul>
+<li>使用tableau将其可视化结果如下</li>
+</ul>
+<p><img src="https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraVlHb0FlV0M2S0VjWWhZP2U9NndjSlFt.png" srcset="/img/loading.gif" lazyload alt="客户类型条形图"></p>
+<ul>
+<li>可以看出重要高价值客户在1w人中有294人，约占3.31%。重要唤回客户在1w人中有8人，约占0.09%，比重较低。</li>
+<li>可以在后续精细化运营场景中直接使用细分用户，做差异化运营: <ul>
+<li>对高价值客户做VIP服务设计，增加用户粘性同时通过设计优惠券提升客户消费; </li>
+<li>对深耕客户做广告、推送刺激，提升消费频次; </li>
+<li>对挽留客户做优惠券、签到送礼策略，增加挽留用户粘性; </li>
+<li>对唤回客户做定向广告、短信召回策略，尝试召回用户。</li>
+</ul>
+</li>
+</ul>
+<h1 id="六、结论"><a href="#六、结论" class="headerlink" title="六、结论"></a>六、结论</h1><p>待续</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/SQL/">#SQL</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">#数据分析</a>
+      
+        <a href="/tags/Tableau/">#Tableau</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>淘宝用户行为分析</div>
+      <div>https://liaoweiquan.github.io/2023/04/11/淘宝用户行为分析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>泉泉</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/31/LeetCode%E6%95%B0%E6%8D%AE%E5%BA%93%E9%A2%98%E8%A7%A3/" title="LeetCode数据库题解">
+                        <span class="hidden-mobile">LeetCode数据库题解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://damaohappy.zeabur.app","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
+              Fluid.plugins.imageCaption(imgSelector);
+              Fluid.plugins.fancyBox(imgSelector);
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
