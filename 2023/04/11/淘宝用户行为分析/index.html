@@ -23,6 +23,7 @@
 <meta property="og:site_name" content="Quan&#39;sRecord">
 <meta property="og:description" content="一、项目背景本项目以淘宝的真实用户的商品行为数据为基础，通过sql分析和tableau可视化，探索用户行为规律，寻找高价值用户；分析商品特征，寻找高贡献商品；分析产品功能，优化产品路径。 注：数据包含了抽样出来的1W用户在一个月时间（11.18~12.18）之内的移动端行为约一千两百万条数据。 二、分析流程   主要从以下四个维度对用户行为进行分析和建议: 用户行为间的转化情况分析利用漏斗模型分析">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhsRWxldXhLeU41ZmhobmYyP2U9SnU0NDYx.jpg">
 <meta property="og:image" content="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGxkVF9iU3dOcE5vTzVPP2U9YW9zRUt2.png">
 <meta property="og:image" content="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGdQZnc4TDNQZlhZNERWP2U9ZnVsQUg0.png">
 <meta property="og:image" content="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraVFMcUpRZW9KRVVPd2YwP2U9YU01dGxy.png">
@@ -71,13 +72,13 @@
 <meta property="og:image" content="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhranlnYVR2QmRMMlo4UE9lP2U9NzRXRVJF.png">
 <meta property="og:image" content="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraVlHb0FlV0M2S0VjWWhZP2U9NndjSlFt.png">
 <meta property="article:published_time" content="2023-04-11T15:56:11.648Z">
-<meta property="article:modified_time" content="2024-03-10T01:53:29.704Z">
+<meta property="article:modified_time" content="2024-03-16T08:01:39.680Z">
 <meta property="article:author" content="泉泉">
 <meta property="article:tag" content="SQL">
 <meta property="article:tag" content="数据分析">
 <meta property="article:tag" content="Tableau">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhraGxkVF9iU3dOcE5vTzVPP2U9YW9zRUt2.png">
+<meta name="twitter:image" content="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhsRWxldXhLeU41ZmhobmYyP2U9SnU0NDYx.jpg">
   
   
   
@@ -336,8 +337,8 @@
 <li>用户的<strong>行为习惯</strong>分析<br>利用pv、uv等指标，找出用户活跃的日期以及每天的活跃时间段。</li>
 <li>用户<strong>类目偏好</strong>分析<br>根据商品的点击、收藏、加购、购买频率，探索用户对商品的购买偏好，找到针对不同商品的营销策略(购买 率较高的类目和产品，优化产品推荐)。</li>
 <li>用户<strong>价值分析</strong><br>找出最具有价值的核心用户群，针对这个群体推送个性化推送，优惠券或者活动。</li>
-<li>待续</li>
 </ul>
+<p><img src="https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL2kvcyFBaE8wcUlFYWhLejhsRWxldXhLeU41ZmhobmYyP2U9SnU0NDYx.jpg" srcset="/img/loading.gif" lazyload alt="分析流程"></p>
 <h2 id="确认问题"><a href="#确认问题" class="headerlink" title="确认问题"></a>确认问题</h2><p>本次分析的目的是想通过对用户行为数据进行分析，为以下问题提供解释和改进建议:</p>
 <ul>
 <li>基于漏斗模型的用户购买流程各环节的分析指标，分析各环节的转化率，便于找到改进的环节。</li>
